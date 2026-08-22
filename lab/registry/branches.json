@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T11:42:00+03:00",
+  "updated_at": "2026-08-22T12:18:00+03:00",
   "branches": [
     {
       "id": "TO-01",
       "name": "Thermo-osmotic hydraulic conversion",
       "status": "active",
       "portfolio_rank": 1,
-      "verdict": "PROMISING",
-      "last_run": "R074",
-      "bottleneck": "Whether multi-stage resistance-reduced TOEC plus heat recovery retains enough source-to-electric efficiency and module power density after real stage temperature drops, parasitics, headers and PTO",
-      "next_task": "T-TOEC-SCALING-MODEL",
+      "verdict": "NEEDS DATA",
+      "last_run": "R075",
+      "bottleneck": "Measured 2–4 stage module data are needed to resolve the >2× gap between optimistic <=2 L and conservative ~4.2 L package projections; loaded multi-stage transport, heat recovery, header loss and thermal-network compactness dominate.",
+      "next_task": "T-TOEC-MODULE-CALIBRATION",
       "workspace": "lab/experiments/EXP-TO-001/README.md"
     },
     {
