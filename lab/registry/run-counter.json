@@ -1,9 +1,16 @@
 {
   "schema_version": 1,
-  "next_research_run": 75,
+  "next_research_run": 76,
   "last_published_run": "R074",
   "last_published_at": "2026-08-22T11:30:00+03:00",
-  "active_reservations": [],
+  "active_reservations": [
+    {
+      "run_id": "R075",
+      "task_id": "T-TOEC-SCALING-MODEL",
+      "shift_id": "shift-20260822-1210-r75",
+      "reserved_at": "2026-08-22T12:10:00+03:00"
+    }
+  ],
   "allocation_rule": "reserve next_research_run in the same Git claim transaction; SHA conflicts are the lock",
   "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and was reconciled into Git before the new RUNNER-centered schedule became authoritative."
 }
