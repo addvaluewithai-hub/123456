@@ -1,0 +1,15 @@
+metric,condition,value,units,evidence_state,meaning
+R075_conservative_N16_volume,80/40C,4.294,L,SIMULATED,Current conservative package projection
+R075_optimistic_N16_volume,80/40C,1.403,L,SIMULATED,Current optimistic package projection
+available_membrane_plus_thermal_volume,conservative fixed volume,1.046,L,ANALYTICAL,Volume left under 2 L after stage+PTO+housing charges
+absolute_min_membrane_area_density,thermal network volume -> 0,0.830,m2/L,ANALYTICAL,Impossible to pass below this packing density even with zero thermal-network volume
+absolute_min_thermal_network_duty_density,membrane volume -> 0,505,W/L,ANALYTICAL,Impossible to pass below this duty density even with zero membrane-core volume
+required_thermal_network_duty_density,membrane packing 1.10 m2/L,2056,W/L,ANALYTICAL,Packaging-only rescue threshold with conservative transport/fixed volume
+required_membrane_area_density,thermal network 1000 W/L,1.679,m2/L,ANALYTICAL,Packaging-only rescue threshold with conservative transport/fixed volume
+required_thermal_network_duty_density,membrane packing 2.00 m2/L,863,W/L,ANALYTICAL,Packaging-only rescue threshold with conservative transport/fixed volume
+reference_4stage_gross_pden,R075 optimistic 4-stage envelope,22.522,W/m2,SIMULATED,Module transport anchor that maps back to the R075 optimistic N16 screen
+reference_4stage_hydraulic_efficiency,R075 optimistic 4-stage envelope,3.569,percent,SIMULATED,Module thermal-to-hydraulic anchor that maps back to R075 optimistic N16
+reference_4stage_gross_pden,R075 conservative 4-stage envelope,14.551,W/m2,SIMULATED,Conservative transport anchor
+reference_4stage_hydraulic_efficiency,R075 conservative 4-stage envelope,2.505,percent,SIMULATED,Conservative thermal-to-hydraulic anchor
+measurement_hydraulic_power_1sigma,target rig,0.6,percent,PROPOSED,Pressure+flow RSS target
+measurement_hydraulic_efficiency_1sigma,target rig,2.7,percent,PROPOSED,Hydraulic power plus calorimetry RSS target
