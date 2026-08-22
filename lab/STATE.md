@@ -1,50 +1,33 @@
-# Current Lab State
+# Energy Research Lab — Current State
 
-Updated: 2026-08-22 17:16 Africa/Cairo
+Updated: 2026-08-22 17:50 EEST
+Latest published research run: **R079**
+Next publishable research run: **R080** (`R078` is abandoned and must never be reused)
 
-## Published frontier
+## Portfolio state
 
-- Latest Sheet1 research run: **R077**
-- Verdict: **NEEDS DATA**
-- Active desk branch: **WET-01 — wet phase-change liquid-piston / wet thermoacoustic core + direct linear alternator**
-- Hardware-waiting branch: **TO-01 — thermo-osmotic hydraulic conversion**
-- Next publishable R-number: **R079** (`R078` is explicitly abandoned and must not be reused)
+1. **WET-01 — NEEDS DATA / waiting-hardware.** R077 froze the deterministic phase-aware classifier. R079 froze the exact buildable experiment: 0.25 mm primary, 0.30 mm comparison only, 5 Hz, ~10 bar, p-hat 20/40 kPa, DRY→WET; simultaneous phase acquisition, dynamic FRF, calorimetry, provenance and safety gates are predeclared. No more WET desk variants are justified without bench data.
+2. **TO-01 — NEEDS DATA / waiting-hardware.** R075 showed ~1.4 L optimistic versus ~4.2 L conservative 80/40°C packages; R076 froze the matched 4-stage calibration needed to decide which envelope is real. No more stage-count variants without hardware.
+3. **MAG-01 — LOW PRIORITY / parked.** No fair equal-resource advantage over a strong multimodal linear baseline.
 
-## What R077 changed
+## WET-01 frozen physical gate
 
-R077 recovered an expired but unpublished reservation safely, validated the existing WET metrology implementation, and froze the R073 decision rule into deterministic code before any hardware measurements are observed.
+Clean promotion requires calibrated BENCH-MEASURED evidence with:
 
-The repo now has:
+- 95% lower bound `Re{G*}/V >= 108 kW m^-3 K^-1`;
+- 95% upper `|phase| <= 30°`;
+- 95% upper wet dissipative loss `<=2.3 W`;
+- p-U vs `f∮p dV` agreement <=5%;
+- hot/cold/acoustic energy closure <=5%;
+- repeatability <=5%;
+- immutable raw/calibration provenance tied to analysis Git SHA.
 
-- `src/energy_lab/wet_metrology.py` for uncertainty propagation and PASS/INCONCLUSIVE/FAIL classification;
-- `tests/test_wet_metrology.py` scientific regressions;
-- `lab/experiments/EXP-WET-001/contracts/measurement-summary.schema.json` for calibrated summary input;
-- `lab/experiments/EXP-WET-001/reference/R077-metrology-gate.json` deterministic reference;
-- CLI commands `wet-metrology-snapshot` and `wet-classify`;
-- CI configured to run repository tests and generate the deterministic R077 reference on push.
+R079 instrument audit says ADC/pressure bandwidth is not the limiting uncertainty; installed thermal-interface phase calibration is the narrowest measurement risk.
 
-No CI pass is claimed because the available connector did not expose the completed push workflow status during the shift. Key regression assertions were independently executed in the tool environment and passed.
+## Active desk work
 
-## R077 quantitative guardband
+No leading energy branch has an honest remaining desk-only task. The next eligible queue item is `T-PORTFOLIO-REVIEW-001`: re-rank the portfolio and seed only genuinely uncertainty-reducing non-hardware work. Do not invent another WET or TOEC parameter sweep to keep the scheduler busy.
 
-The frozen 5 Hz diffusion screen still reproduces the accepted 0.25 mm point: thermal phase ~-16.22° and mass phase ~-13.91°. The 0.30 mm comparison remains materially slower (~-22.25° thermal, ~-19.33° mass).
+## CI note
 
-If the final fitted in-phase conductance has ~5% 1-sigma relative uncertainty, phase sigma is 2°, and wet-loss sigma is 0.2 W, a **clean 95%-bound PASS** requires nominal approximately:
-
-- `Re{G*}/V >= 119.73 kW m^-3 K^-1`;
-- `|phase| <= 26.08°`;
-- `wet loss <= 1.908 W`.
-
-A nominal result near 110–115 kW/m³K is therefore still inconclusive at that uncertainty even though it exceeds the raw 108 kW/m³K threshold.
-
-## WET-01 state
-
-WET-01 remains **NEEDS DATA**. The digital decision layer is closed; one desk task remains to freeze the exact buildable hardware/instrumentation/calibration/safety packet. After that the branch should become waiting-hardware rather than reopen geometry optimization.
-
-## TO-01 state
-
-TO-01 remains **waiting-hardware / NEEDS DATA** at the R076 4-stage matched calibration boundary. Do not create more stage-count variants without new physical module evidence.
-
-## Current next task
-
-`T-WET-HARDWARE-PACKET` — freeze exact pressure-rated coupon dimensions/tolerances, instrumentation, dynamic transfer-function calibration, DRY→WET procedure, data provenance, BOM-level measurement contract and safety boundaries without claiming physical operation.
+R079 changed experiment-design/provenance files, not physics code. The Git status connector returned no completed status checks for the substantive commit, so no CI PASS is claimed.

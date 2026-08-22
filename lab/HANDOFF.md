@@ -1,45 +1,39 @@
-# Handoff
+# Energy Research Lab — Handoff
 
-## Read first
+Latest published run: **R079**
+Next publishable run: **R080**. `R078` is explicitly abandoned and must not be reused.
 
-1. `lab/STATE.md`
-2. `lab/registry/queue.json`
-3. `lab/experiments/EXP-WET-001/README.md`
-4. `lab/experiments/EXP-WET-001/R077-DIGITAL-GATE.md`
-5. `lab/experiments/EXP-WET-001/contracts/measurement-summary.schema.json`
-6. `src/energy_lab/wet_metrology.py`
-7. `lab/protocols/EXPERIMENT-GATES.md`
+## What R079 closed
+
+WET-01 now has both halves required before hardware:
+
+- R077: deterministic uncertainty-aware digital gate;
+- R079: buildable cartridge/instrumentation/calibration/provenance/safety packet.
+
+Authoritative files:
+
+- `lab/experiments/EXP-WET-001/R079-HARDWARE-PACKET.md`
+- `lab/experiments/EXP-WET-001/contracts/hardware-run-manifest.schema.json`
+- `lab/experiments/EXP-WET-001/R077-DIGITAL-GATE.md`
+- `src/energy_lab/wet_metrology.py`
+
+Do not claim physical operation. EXP-WET-001 is still PROPOSED / WAITING HARDWARE.
 
 ## Current bottleneck
 
-R077 closed the remaining WET-01 digital/metrology ambiguity. The PASS/INCONCLUSIVE/FAIL rule and uncertainty propagation are frozen before hardware data. The remaining actionable desk bottleneck is now physical experiment specification: exact pressure-rated geometry/tolerances, sensor choices/locations, transfer-function calibration, calorimetry, DRY→WET procedure, data provenance and safety packet.
+Both leading branches are now honestly hardware-limited:
 
-TO-01 remains waiting-hardware at its R076 matched 4-stage calibration boundary.
+- WET-01 needs calibrated 0.25 mm / 5 Hz / 10 bar DRY→WET bench data.
+- TO-01 needs the matched R076 4-stage thermo-osmotic module data.
 
-## Next recommended role
+## Next task
 
-`experimentalist-metrologist`.
+Claim `T-PORTFOLIO-REVIEW-001` under the research-lead-falsifier role and perform a real portfolio synthesis. It should decide whether there is a third branch with a defensible desk-testable uncertainty worth funding, whether an old branch deserves reopening because new evidence changed a premise, or whether the queue should intentionally become empty pending hardware. Seed at most a few concrete tasks and do not manufacture work.
 
-## Exact next mission
+## Known traps
 
-Execute `T-WET-HARDWARE-PACKET`. Preserve the frozen `r_h≈0.25 mm`, 5 Hz, ~10 bar, p-hat≈20/40 kPa point and 0.30 mm comparison only. Convert EXP-WET-001 into a buildable measurement packet with exact channels, bandwidth/phase calibration around 1/3/5/7/10 Hz, mechanical/pressure tolerances, hot/cold calorimetry, synchronized clock requirements, raw-data/provenance manifest, controls, repeatability, and pressure/thermal safety boundaries. Do not claim any hardware has been run.
-
-## R077 guardband to preserve
-
-With illustrative sigma(Re)/Re=5%, phase sigma=2° and wet-loss sigma=0.2 W, clean 95%-bound PASS needs nominal roughly `119.73 kW m^-3 K^-1`, `|phase|<=26.08°`, and `wet loss<=1.908 W`. The raw physical gates remain 108 kW/m³K, 30° and 2.3 W with <=5% work/energy/repeatability quality checks.
-
-## Run-number warning
-
-`R078` was explicitly abandoned unpublished during an earlier concurrency recovery and must never be reused. `run-counter.json` therefore sets the next publishable research number to **R079**.
-
-## Hard rules
-
-- Do not reopen WET pore/frequency optimization.
-- Do not generate more TOEC stage-count cases without matched module evidence.
-- Keep PROPOSED/SIMULATED/BENCH-MEASURED labels separate.
-- A calibrated summary JSON is not enough for promotion without raw/calibration provenance.
-- Do not claim GitHub Actions passed unless the workflow result is actually observed.
-
-## Stop condition
-
-Once the hardware packet is precise enough that a competent builder/metrologist could execute the coupon test without inventing missing measurement logic, set WET-01 to waiting-hardware. If no other desk branch has an uncertainty-reducing task, portfolio review may then seed the next independent invention branch instead of polishing WET geometry.
+- Do not reopen WET pore radius/frequency or TOEC stage count without new physical/external evidence.
+- Do not convert vendor specifications into bench evidence.
+- Do not count servo/pressure/resonance/magnets as energy sources.
+- Preserve the R077/R079 physical promotion gates exactly unless a later accepted decision explicitly changes them with evidence.
+- Always reconcile Sheet1 first; latest row is R079 and next counter is R080.

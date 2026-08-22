@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T17:16:00+03:00",
+  "updated_at": "2026-08-22T17:50:00+03:00",
   "branches": [
     {
       "id": "WET-01",
       "name": "Wet phase-change liquid-piston + direct linear alternator",
-      "status": "active",
+      "status": "waiting-hardware",
       "portfolio_rank": 1,
       "verdict": "NEEDS DATA",
-      "last_run": "R077",
-      "bottleneck": "The deterministic phase-aware metrology gate is now closed. One legitimate desk task remains: freeze the exact buildable instrumentation/calibration/safety packet; after that the decisive unknown is physical wet-coupon data at 0.25 mm / 5 Hz / 10 bar.",
-      "next_task": "T-WET-HARDWARE-PACKET",
-      "workspace": "lab/experiments/EXP-WET-001/README.md"
+      "last_run": "R079",
+      "bottleneck": "R079 closed the final desk-design gap. Only calibrated physical wet-interface conductance/phase/loss data from EXP-WET-001 can now change the verdict.",
+      "next_task": null,
+      "workspace": "lab/experiments/EXP-WET-001/R079-HARDWARE-PACKET.md"
     },
     {
       "id": "TO-01",
