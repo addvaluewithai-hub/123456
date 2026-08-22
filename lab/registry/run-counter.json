@@ -9,14 +9,17 @@
       "task_id": "T-WET-METROLOGY-CODE",
       "shift_id": "run-20260822-1411-r077",
       "reserved_at": "2026-08-22T14:11:00+03:00"
-    },
+    }
+  ],
+  "abandoned_reservations": [
     {
       "run_id": "R078",
       "task_id": "T-PORTFOLIO-REVIEW-001",
       "shift_id": "shift-20260822-1513-r078",
-      "reserved_at": "2026-08-22T15:13:00+03:00"
+      "abandoned_at": "2026-08-22T15:18:00+03:00",
+      "reason": "A lower-number live reservation R077 had not yet published. Publishing R078 first would break the current Sheet1 latest-row reconciliation invariant. No Sheet row was appended and the draft portfolio task seed was removed."
     }
   ],
-  "allocation_rule": "reserve next_research_run in the same Git claim transaction; SHA conflicts are the lock",
-  "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and reconciled into Git. R075 is the first completed RUNNER-centered Git+Sheet research transaction. R076 froze the TOEC 4-stage calibration contract and moved TO-01 to waiting-hardware. R077 is a live WET metrology-code claim; R078 is reserved for an independent portfolio review without interfering with that live lease."
+  "allocation_rule": "serialize research-run publication while Sheet1 reconciliation depends on the latest non-empty row; do not reserve a higher R-number while any lower live reservation exists",
+  "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and reconciled into Git. R075 and R076 completed under the runner. R077 remains a live WET metrology-code reservation. R078 was explicitly abandoned unpublished after detecting a run-order concurrency hazard."
 }
