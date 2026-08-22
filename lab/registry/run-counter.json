@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "next_research_run": 78,
+  "next_research_run": 79,
   "last_published_run": "R076",
   "last_published_at": "2026-08-22T13:18:00+03:00",
   "active_reservations": [
@@ -9,8 +9,14 @@
       "task_id": "T-WET-METROLOGY-CODE",
       "shift_id": "run-20260822-1411-r077",
       "reserved_at": "2026-08-22T14:11:00+03:00"
+    },
+    {
+      "run_id": "R078",
+      "task_id": "T-PORTFOLIO-REVIEW-001",
+      "shift_id": "shift-20260822-1513-r078",
+      "reserved_at": "2026-08-22T15:13:00+03:00"
     }
   ],
   "allocation_rule": "reserve next_research_run in the same Git claim transaction; SHA conflicts are the lock",
-  "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and reconciled into Git. R075 is the first completed RUNNER-centered Git+Sheet research transaction. R076 froze the TOEC 4-stage calibration contract and moved TO-01 to waiting-hardware."
+  "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and reconciled into Git. R075 is the first completed RUNNER-centered Git+Sheet research transaction. R076 froze the TOEC 4-stage calibration contract and moved TO-01 to waiting-hardware. R077 is a live WET metrology-code claim; R078 is reserved for an independent portfolio review without interfering with that live lease."
 }
