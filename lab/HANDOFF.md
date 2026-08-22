@@ -1,34 +1,33 @@
 # Energy Research Lab — Handoff
 
-Latest published run: **R080**
-Next publishable run: **R081**. `R078` is explicitly abandoned and must not be reused.
+Latest published run: **R081**
+Next publishable run: **R082**. `R078` is explicitly abandoned and must not be reused.
 
-## What R080 changed
+## What R081 changed
 
-The portfolio synthesis did not reopen WET-01 or TO-01. Both remain honestly hardware-limited. Fresh June 2026 Joule evidence materially changed only the old R019 evaporation/osmotic family, so a new branch **EVOSM-01** was opened for exactly one system audit.
+The one-run EVOSM audit is complete. Compact 10 W / 2 L EVOSM is now LOW PRIORITY. At measured 0.66 W/m² large-area output, 10 W requires 15.15 m² membrane; with ~100 µm reported membrane thickness, the membrane solid is ~1.515 L. The absolute 2 L average repeat pitch is 132 µm, leaving only 32 µm total beyond the membrane for channels/electrodes/spacers. A 0.5 mm pitch requires 2.5 W/m² (3.79× measured); 1 mm requires 5 W/m² (7.58×).
 
-Key evidence/bounds:
+External source accounting remains explicit: favorable natural-evaporation modelling gives an ideal >=0.953 m² source footprint for 10 W, and the 25°C/50% RH reversible water-vapor exergy bound implies >=0.377 kg/h ideal evaporation. A 50-bar ideal PRO route needs ~7.2 kg/h for 10 W before losses, so direct ion-selective conversion has a potential water-throughput advantage but is not proven source-to-electric efficient at scale.
 
-- measured osmotic power density: 8.5 W/m² at 1 cm², but 0.66 W/m² at 1000 cm²;
-- scale degradation: ~12.9×;
-- 10 W at the measured large-area density: ~15.15 m² membrane;
-- hypothetical 2 L core at that density: ~7,576 m²/m³ active-area packing before channels/reservoirs/evaporator;
-- favorable natural-evaporation resource bound: ~10.49 W/m² annual average, implying ~0.95 m² exposed source surface even for ideal 10 W capture.
-
-Authoritative artifact: `lab/portfolio/R080-PORTFOLIO-SYNTHESIS.md`.
+Authoritative artifacts:
+- `src/energy_lab/evosm.py`
+- `tests/test_evosm.py`
+- `lab/branches/EVOSM-01/R081-SCALING-AUDIT.md`
+- `lab/runs/2026-08-22/R081-EVOSM-SCALING-AUDIT.md`
 
 ## Next task
 
-Claim `T-EVOSM-SCALING-AUDIT` under the computational-modeler role. Build a reproducible whole-system model anchored to the measured 1000 cm² / 0.66 W/m² result, not the 1 cm² record. Close membrane area/packing, concentration polarization, salinity/water inventory, evaporation area and mass flux, source exergy, salt crossover, circulation parasitics, contacts/series wiring and package volume. Compare direct osmotic electricity against R019 hydraulic PRO + pressure recovery under the same source.
+There is intentionally **no ready desk research task**. On the next wakeup, reconstruct truth and stop without inventing work unless new evidence/data creates an eligible task.
 
-## Stop condition
+## Reopen triggers
 
-If <=2 L compact output needs >3× improvement in more than one independent measured bottleneck, retire the compact version rather than seed another optimization. A distributed-area variant may remain only if its complete source-to-electric areal result is competitive after regeneration/parasitics.
+- WET: real calibrated EXP-WET-001 data.
+- TO: matched 4-stage module data.
+- EVOSM: matched ≥1000 cm² regeneration/crossover/auxiliary data or a substantially thinner membrane/module preserving large-area output.
 
 ## Known traps
 
-- Do not extrapolate the 1 cm² 8.5 W/m² record directly to module scale.
-- Do not count series voltage as increased energy.
-- Keep external evaporation footprint separate from internal package volume, but report both.
-- Salt is working inventory only if crossover/loss is restored/accounted.
-- WET-01 and TO-01 remain waiting-hardware; do not use R081 to reopen their frozen parameter spaces.
+- Do not extrapolate the 1 cm² 8.5 W/m² EVOSM record to module scale.
+- Do not treat the 10.49 W/m² natural evaporation model as measured Joule input.
+- Do not invent matched evaporation mass flow or salt crossover values absent from accessible evidence.
+- Do not create a new task merely because the queue is empty.

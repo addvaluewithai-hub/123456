@@ -1,14 +1,12 @@
 {
   "schema_version": 1,
   "next_research_run": 82,
-  "last_published_run": "R080",
-  "last_published_at": "2026-08-22T18:32:00+03:00",
-  "active_reservations": [
-    {"run_id":"R081","task_id":"T-EVOSM-SCALING-AUDIT","shift_id":"shift-20260822-1910-r081","reserved_at":"2026-08-22T19:10:00+03:00","lease_expires_at":"2026-08-22T21:10:00+03:00"}
-  ],
+  "last_published_run": "R081",
+  "last_published_at": "2026-08-22T19:16:00+03:00",
+  "active_reservations": [],
   "abandoned_reservations": [
     {"run_id":"R078","task_id":"T-PORTFOLIO-REVIEW-001","shift_id":"shift-20260822-1513-r078","abandoned_at":"2026-08-22T15:18:00+03:00","reason":"A lower-number live reservation R077 had not yet published. Publishing R078 first would break the current Sheet1 latest-row reconciliation invariant. No Sheet row was appended and the draft portfolio task seed was removed."}
   ],
   "allocation_rule":"serialize research-run publication while Sheet1 reconciliation depends on the latest non-empty row; do not reserve a higher R-number while any lower live reservation exists",
-  "reconciliation_note":"R081 reserved for T-EVOSM-SCALING-AUDIT by shift-20260822-1910-r081. R078 remains abandoned and must never be reused."
+  "reconciliation_note":"R081 published and verified in Sheet1. R078 remains abandoned and must never be reused. Next publishable ID is R082, but there is intentionally no ready desk task."
 }
