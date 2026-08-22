@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "energy-lab/EXP-WET-001/measurement-summary.schema.json",
+  "title": "EXP-WET-001 calibrated measurement summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "conductance_magnitude_density_w_m3_k",
+    "physical_phase_deg",
+    "amplitude_relative_sigma",
+    "phase_sigma_deg",
+    "geometry_relative_sigma",
+    "wet_loss_w",
+    "wet_loss_sigma_w",
+    "work_disagreement_fraction",
+    "energy_closure_fraction",
+    "repeatability_fraction"
+  ],
+  "properties": {
+    "conductance_magnitude_density_w_m3_k": {"type": "number", "minimum": 0},
+    "physical_phase_deg": {"type": "number"},
+    "amplitude_relative_sigma": {"type": "number", "minimum": 0},
+    "phase_sigma_deg": {"type": "number", "minimum": 0},
+    "geometry_relative_sigma": {"type": "number", "minimum": 0},
+    "wet_loss_w": {"type": "number", "minimum": 0},
+    "wet_loss_sigma_w": {"type": "number", "minimum": 0},
+    "work_disagreement_fraction": {"type": "number", "minimum": 0},
+    "energy_closure_fraction": {"type": "number", "minimum": 0},
+    "repeatability_fraction": {"type": "number", "minimum": 0}
+  },
+  "description": "All sigma fields are 1-sigma standard uncertainties. This is a calibrated summary contract, not a raw-trace format. physical_phase_deg is corrected for instrument transfer function before classification."
+}

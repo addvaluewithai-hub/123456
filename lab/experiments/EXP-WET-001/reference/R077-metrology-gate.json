@@ -1,0 +1,51 @@
+{
+  "branch": "WET-01",
+  "clean_pass_guardbands": {
+    "example_uncertainty_assumptions": {
+      "phase_sigma_deg": 2.0,
+      "re_relative_sigma": 0.05,
+      "wet_loss_sigma_w": 0.2
+    },
+    "targets": {
+      "max_nominal_abs_phase_deg": 26.080072030919894,
+      "max_nominal_wet_loss_w": 1.908007203091989,
+      "min_nominal_re_g_per_v_w_m3_k": 119733.68557296248
+    }
+  },
+  "experiment": "EXP-WET-001",
+  "frozen_diffusion_screen": {
+    "evidence_state": "ANALYTICAL_SCREEN",
+    "points": [
+      {
+        "frequency_hz": 5.0,
+        "hydraulic_radius_mm": 0.25,
+        "mass_factor_real": 0.9304622367558161,
+        "mass_phase_deg": -13.912231957998916,
+        "mean_pressure_bar": 10.0,
+        "thermal_factor_real": 0.9060636562719002,
+        "thermal_phase_deg": -16.219515921002444
+      },
+      {
+        "frequency_hz": 5.0,
+        "hydraulic_radius_mm": 0.3,
+        "mass_factor_real": 0.8679306227246524,
+        "mass_phase_deg": -19.325169386446273,
+        "mean_pressure_bar": 10.0,
+        "thermal_factor_real": 0.8267011735128642,
+        "thermal_phase_deg": -22.254027875067308
+      }
+    ],
+    "warning": "Intrinsic transverse diffusion only; no wall/contact/wet-film/interface or bench response is invented."
+  },
+  "gate": {
+    "max_abs_phase_deg": 30.0,
+    "max_energy_closure_fraction": 0.05,
+    "max_repeatability_fraction": 0.05,
+    "max_wet_loss_w": 2.3,
+    "max_work_disagreement_fraction": 0.05,
+    "min_re_g_per_v_w_m3_k": 108000.0
+  },
+  "interpretation": "Reference values are analytical/metrology-design outputs, not hardware measurements.",
+  "run": "R077",
+  "schema_version": 1
+}
