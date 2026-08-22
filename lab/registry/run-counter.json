@@ -1,9 +1,16 @@
 {
   "schema_version": 1,
-  "next_research_run": 80,
+  "next_research_run": 81,
   "last_published_run": "R079",
   "last_published_at": "2026-08-22T17:47:00+03:00",
-  "active_reservations": [],
+  "active_reservations": [
+    {
+      "run_id": "R080",
+      "task_id": "T-PORTFOLIO-REVIEW-001",
+      "shift_id": "shift-20260822-1809-r080",
+      "reserved_at": "2026-08-22T18:09:00+03:00"
+    }
+  ],
   "abandoned_reservations": [
     {
       "run_id": "R078",
@@ -14,5 +21,5 @@
     }
   ],
   "allocation_rule": "serialize research-run publication while Sheet1 reconciliation depends on the latest non-empty row; do not reserve a higher R-number while any lower live reservation exists",
-  "reconciliation_note": "R079 published successfully after the explicitly abandoned R078. R078 must never be reused. Next publishable research ID is R080."
+  "reconciliation_note": "R080 reserved by T-PORTFOLIO-REVIEW-001 after Sheet/Git reconciliation confirmed R079 as latest. R078 remains abandoned and must never be reused."
 }
