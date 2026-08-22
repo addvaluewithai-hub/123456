@@ -23,6 +23,8 @@ def _measurement_from_scenario(name: str) -> FourStageMeasurement:
         electric_parasitic_w=s.electric_parasitic_w,
         pto_volume_l=s.pto_fixed_volume_l + 10.0 / s.pto_specific_power_w_per_l,
         housing_volume_l=s.housing_volume_l,
+        eta_stage_n1_fraction=s.stage_factor_n1_eta,
+        power_stage_n1_fraction=s.stage_factor_n1_power,
     )
 
 
@@ -47,7 +49,6 @@ def test_conservative_packaging_boundary_matches_r076_thresholds():
 
 
 def test_measurement_uncertainty_is_small_relative_to_package_gap():
-    # Representative 1-sigma terms: pressure 0.3%, flow 0.5%, calorimetry 2.5%.
     hydraulic = rss_relative_uncertainty(0.003, 0.005)
     efficiency = rss_relative_uncertainty(hydraulic, 0.025)
     assert hydraulic < 0.006

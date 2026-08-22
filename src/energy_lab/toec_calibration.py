@@ -24,11 +24,8 @@ class FourStageMeasurement:
     electric_parasitic_w: float
     pto_volume_l: float
     housing_volume_l: float
-
-
-# Predeclared R075 interpolation ratios. These are model assumptions, not data.
-R075_ETA_SCALE_4_TO_16 = stage_factor(16, 0.64) / stage_factor(4, 0.64)
-R075_PDEN_SCALE_4_TO_16 = stage_factor(16, 0.50) / stage_factor(4, 0.50)
+    eta_stage_n1_fraction: float = 0.64
+    power_stage_n1_fraction: float = 0.50
 
 
 def project_16_from_4(
@@ -39,10 +36,11 @@ def project_16_from_4(
 ) -> dict[str, float | bool]:
     """Project a 4-stage calibrated point to N=16 using the frozen R075 law.
 
-    This function intentionally does not fit a new stage law. It is a
-    falsification bridge: measured 4-stage quantities can collapse the R075
-    optimistic/conservative package envelope, while the 4->16 interpolation
-    remains explicitly modelled and must carry a scale-law uncertainty.
+    The interpolation shape is explicitly carried with the measurement record.
+    For the R075 envelopes this is eta n1=0.64 optimistic or 0.58
+    conservative, and power n1=0.50. A future measured 4-stage point must
+    retain a separate scale-law uncertainty rather than treating this
+    extrapolation as measured evidence.
     """
     m = measurement
     positive = [
@@ -62,9 +60,13 @@ def project_16_from_4(
         raise ValueError("header loss fraction must be in [0,1)")
     if m.electric_parasitic_w < 0:
         raise ValueError("electric parasitic must be non-negative")
+    if not 0 < m.eta_stage_n1_fraction <= 1 or not 0 < m.power_stage_n1_fraction <= 1:
+        raise ValueError("stage n1 fractions must be in (0,1]")
 
-    pden16 = m.gross_hydraulic_power_density_w_m2 * R075_PDEN_SCALE_4_TO_16
-    eta16 = m.hydraulic_efficiency * R075_ETA_SCALE_4_TO_16
+    eta_scale = stage_factor(16, m.eta_stage_n1_fraction) / stage_factor(4, m.eta_stage_n1_fraction)
+    pden_scale = stage_factor(16, m.power_stage_n1_fraction) / stage_factor(4, m.power_stage_n1_fraction)
+    pden16 = m.gross_hydraulic_power_density_w_m2 * pden_scale
+    eta16 = m.hydraulic_efficiency * eta_scale
     gross_hydraulic_w = (target_dc_w + m.electric_parasitic_w) / (
         m.hydraulic_to_electric_efficiency * (1 - m.header_pressure_loss_fraction)
     )
@@ -79,6 +81,8 @@ def project_16_from_4(
     electric_efficiency = target_dc_w / source_heat_w
     frac_carnot = electric_efficiency / carnot_efficiency(hot_c, cold_c)
     return {
+        "eta_scale_4_to_16": eta_scale,
+        "pden_scale_4_to_16": pden_scale,
         "projected_pden16_w_m2": pden16,
         "projected_eta16": eta16,
         "gross_hydraulic_w": gross_hydraulic_w,
@@ -104,13 +108,7 @@ def conservative_packaging_boundary(
     membrane_area_density_m2_per_l: float | None = None,
     thermal_network_specific_duty_w_per_l: float | None = None,
 ) -> dict[str, float]:
-    """Invert the conservative R075 N=16 volume ledger.
-
-    Exactly one of membrane_area_density_m2_per_l or
-    thermal_network_specific_duty_w_per_l may be supplied to calculate the
-    minimum value of the other. With neither supplied, return absolute minima
-    obtained if the other subsystem had zero volume.
-    """
+    """Invert the conservative R075 N=16 volume ledger."""
     available = total_volume_limit_l - fixed_volume_l
     if available <= 0:
         raise ValueError("no volume remains for membrane+thermal network")
