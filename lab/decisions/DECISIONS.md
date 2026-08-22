@@ -27,3 +27,7 @@ Accepted 2026-08-22 from the published R074 row. Newer resistance-reduced TOEC e
 ## D007 — Separate TOEC transport anchors and calibrate small before scaling
 
 Accepted from R075. The measured 56.69 L m^-2 h^-1 **single-stage** flux and the separate **modelled 38-stage** 34.05 W/m² / 4.72% result must never be treated as one loaded operating point without matched conditions and normalization. The R075 audit shows an optimistic 80/40°C package can clear 2 L around N≈16, while a conservative envelope remains ~4.2 L; therefore the next decisive step is a measured 2–4 stage calibration module. Do not optimize or build 38 stages until loaded transport, heat recovery, header loss and thermal-network compactness collapse that uncertainty band.
+
+## D008 — Freeze TOEC desk scaling at the 4-stage hardware gate
+
+Accepted from R076. The matched four-stage calibration contract is now the authoritative next TO-01 evidence step. The conservative package boundary is `0.8681/rho_A + 528.7/q_V <= 1.0463 L`; optimistic membrane packing alone cannot rescue conservative transport/thermal duty. TO-01 becomes waiting-hardware. Do not create more stage-count variants until matched module data arrive. Desk priority returns to the highest-value non-hardware task, currently WET-01 metrology code.

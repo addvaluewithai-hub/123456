@@ -1,16 +1,9 @@
 {
   "schema_version": 1,
   "next_research_run": 77,
-  "last_published_run": "R075",
-  "last_published_at": "2026-08-22T12:14:00+03:00",
-  "active_reservations": [
-    {
-      "run_id": "R076",
-      "task_id": "T-TOEC-MODULE-CALIBRATION",
-      "shift_id": "shift-20260822-1307-r076",
-      "reserved_at": "2026-08-22T13:07:00+03:00"
-    }
-  ],
+  "last_published_run": "R076",
+  "last_published_at": "2026-08-22T13:18:00+03:00",
+  "active_reservations": [],
   "allocation_rule": "reserve next_research_run in the same Git claim transaction; SHA conflicts are the lock",
-  "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and reconciled into Git. R075 is the first completed RUNNER-centered Git+Sheet research transaction."
+  "reconciliation_note": "R074 was published by the legacy scheduler during infrastructure migration and reconciled into Git. R075 is the first completed RUNNER-centered Git+Sheet research transaction. R076 froze the TOEC 4-stage calibration contract and moved TO-01 to waiting-hardware."
 }

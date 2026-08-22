@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T12:18:00+03:00",
+  "updated_at": "2026-08-22T13:18:00+03:00",
   "branches": [
-    {
-      "id": "TO-01",
-      "name": "Thermo-osmotic hydraulic conversion",
-      "status": "active",
-      "portfolio_rank": 1,
-      "verdict": "NEEDS DATA",
-      "last_run": "R075",
-      "bottleneck": "Measured 2–4 stage module data are needed to resolve the >2× gap between optimistic <=2 L and conservative ~4.2 L package projections; loaded multi-stage transport, heat recovery, header loss and thermal-network compactness dominate.",
-      "next_task": "T-TOEC-MODULE-CALIBRATION",
-      "workspace": "lab/experiments/EXP-TO-001/README.md"
-    },
     {
       "id": "WET-01",
       "name": "Wet phase-change liquid-piston + direct linear alternator",
+      "status": "active",
+      "portfolio_rank": 1,
+      "verdict": "NEEDS DATA",
+      "last_run": "R073",
+      "bottleneck": "Physical coupon still needs measured phase-aware complex heat/mass transfer and wet loss at 0.25 mm / 5 Hz / 10 bar, but the deterministic metrology/uncertainty implementation is an unresolved desk task.",
+      "next_task": "T-WET-METROLOGY-CODE",
+      "workspace": "lab/experiments/EXP-WET-001/README.md"
+    },
+    {
+      "id": "TO-01",
+      "name": "Thermo-osmotic hydraulic conversion",
       "status": "waiting-hardware",
       "portfolio_rank": 2,
       "verdict": "NEEDS DATA",
-      "last_run": "R073",
-      "bottleneck": "Measured phase-aware complex heat/mass transfer and wet loss at the exact 5 Hz/10 bar coupon point",
-      "next_task": "T-WET-METROLOGY-CODE",
-      "workspace": "lab/experiments/EXP-WET-001/README.md"
+      "last_run": "R076",
+      "bottleneck": "R076 froze the exact 4-stage matched calibration. Further stage-count modeling is lower value until measured loaded W/m², hydraulic efficiency, heat recovery, header loss and physical compactness arrive.",
+      "next_task": null,
+      "workspace": "lab/experiments/EXP-TO-001/R076-CALIBRATION-CONTRACT.md"
     },
     {
       "id": "MAG-01",

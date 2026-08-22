@@ -1,30 +1,30 @@
 # Current Lab State
 
-Updated: 2026-08-22 12:18 Africa/Cairo
+Updated: 2026-08-22 13:18 Africa/Cairo
 
 ## Published frontier
 
-- Latest Sheet1 research run: **R075**
+- Latest Sheet1 research run: **R076**
 - Verdict: **NEEDS DATA**
-- Active branch: **TO-01 — thermo-osmotic hydraulic conversion**
-- Hardware-waiting branch: **WET-01 — wet phase-change liquid-piston / wet thermoacoustic core + direct linear alternator**
+- Active desk branch: **WET-01 — wet phase-change liquid-piston / wet thermoacoustic core + direct linear alternator**
+- Hardware-waiting branch: **TO-01 — thermo-osmotic hydraulic conversion**
 
-## What R075 changed
+## What R076 changed
 
-R075 built a reproducible 20-case TOEC source-to-electric/package audit for 60/20°C and 80/40°C at N=1/4/8/16/38. The source temperature span is used exactly once and the model charges membrane area, source heat, header loss, PTO, parasitics, stage overhead, thermal-network volume and housing.
+R076 converted the R075 TOEC optimistic-vs-conservative uncertainty into one buildable **4-stage calibration contract** instead of another stage-count sweep. The proposed rig uses 100 cm² active membrane per stage, 80→40°C thermal cascade, separate stage pressure/flow metering, hot/cold calorimetry, interstage heat accounting, blank/open-load controls and a loaded 1–5 MPa sweep within qualified hardware ratings.
 
-The optimistic-but-defensible 80/40°C screen clears 10 W / 2 L, with the smallest tested package near **N=16: ~1.40 L, ~0.445 m² membrane, ~304 W source heat, ~3.29% electric = ~29% Carnot**. N=38 is slightly larger (~1.45 L) because stage hardware begins to offset area/thermal savings. The conservative 80/40°C envelope is ~4.2 L; its N=16 membrane+thermal subsystem needs roughly **3.2× combined compactness improvement** to fit 2 L. Optimistic 60/20°C is only borderline (~1.95–1.99 L at N=16–38).
+The conservative N=16 package inversion is now explicit:
 
-A key evidence correction is now durable: the measured **56.69 L m^-2 h^-1 single-stage flux** and the separate **38-stage modelled 34.05 W/m² / 4.72%** point cannot be treated as one loaded operating point. Doing so implies ~98.06% latent-heat recovery, above the simple ideal 38-effect ~97.37%, signaling a normalization/operating-condition mismatch rather than an energy anomaly.
+`0.8681/rho_A + 528.7/q_V <= 1.0463 L`
 
-## Current decisive question
+for the membrane + thermal network under the current conservative fixed-volume charges. Therefore rho_A must be at least 0.830 m²/L even if thermal-network volume vanished, and q_V at least 505 W/L even if membrane volume vanished. At rho_A=1.10 m²/L, q_V must be ~2056 W/L; at q_V=1000 W/L, rho_A must be ~1.68 m²/L. Optimistic membrane packing alone does not rescue conservative transport/thermal duty.
 
-Do measured 2–4 stage module values for loaded flux/pressure, heat recovery, header loss and thermal-network compactness land near the optimistic envelope or the conservative one?
+The proposed metrology budget is ~0.6% 1σ on hydraulic power and ~2.7% on hydraulic efficiency, much smaller than the ~3× package gap. The remaining important uncertainty is the unmeasured 4→16 stage scaling law, which must retain a separate ~15–20% sensitivity band.
 
-## Next task
+## TO-01 state
 
-`T-TOEC-MODULE-CALIBRATION` — freeze the smallest instrumented 2–4 stage module and invert the R075 model into measured pass/fail thresholds before considering 16 or 38 stages.
+TO-01 remains physically plausible but is now **waiting-hardware / NEEDS DATA**. Do not create more 16/38-stage variants. Promotion requires the matched 4-stage experiment in `lab/experiments/EXP-TO-001/R076-CALIBRATION-CONTRACT.md` to support a 95% upper projected volume <=2 L and 95% lower electric performance >=15% Carnot preferred.
 
-## Preserved WET-01 gate
+## Current next task
 
-When hardware becomes available, WET-01 still requires the frozen 0.25 mm / 5 Hz / 10 bar DRY→WET coupon with phase-aware `Re{G*}/V`, wet loss and uncertainty bounds. Do not restart geometry churn.
+`T-WET-METROLOGY-CODE` — implement the frozen WET-01 phase-aware coupon digital experiment and uncertainty gate. This is genuine remaining desk work and must not change the 0.25 mm / 5 Hz / 10 bar hardware point.

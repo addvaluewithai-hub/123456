@@ -1,44 +1,39 @@
-# EXP-TO-001 — Multi-stage thermo-osmotic scaling and heat-recovery gate
+# EXP-TO-001 — Multi-stage thermo-osmotic calibration gate
 
-Status: **SIMULATED / NEEDS MODULE DATA**
+Status: **PROPOSED / WAITING HARDWARE**
 Branch: TO-01
-Origin: R074; computational gate R075
+Latest run: R076
 
-## Question
+## Current question
 
-Can a resistance-reduced, staged thermo-osmotic energy converter with explicit latent-heat recovery produce a credible path to ~10 W DC in <=2 L from a low-grade thermal gradient after real stage temperature drops and package parasitics are included?
+Can matched 4-stage measurements of loaded hydraulic power density, thermal-to-hydraulic efficiency, heat recovery, header loss and physical package density support a credible 10 W DC / <=2 L N≈16 scale path?
 
-## Evidence anchors
+## Durable evidence
 
-- Foundational thermo-osmotic pressure generation against substantial hydraulic back-pressure is experimentally established.
-- Zhang et al. (Applied Energy 2025, DOI 10.1016/j.apenergy.2025.125740) report **56.69 L m^-2 h^-1 experimentally for a single-stage system**.
-- The same paper reports **4.72% operational efficiency and 34.05 W/m² from a theoretical 38-stage 80/40°C model**. Those values are not our measurements and must not be combined as though they are the same loaded operating point.
-- Li et al. (ACS AMI 2021, DOI 10.1021/acsami.1c03395) experimentally demonstrated a pump-free multistage architecture at 1.39±0.25 W/m² and modelled 30 stages at 2.72% / 14 W/m².
-- Straub & Elimelech (ES&T 2017, DOI 10.1021/acs.est.7b02213) modelled an optimized 60/20°C system up to 4.1% absolute efficiency (~34% Carnot) and warned that high power density and finite heat exchangers reduce efficiency.
-- Liu et al. (Water Research 2024, DOI 10.1016/j.watres.2024.121586) experimentally support in-situ latent-heat recovery in a neighboring hollow-fiber membrane-distillation architecture; it motivates heat recovery but does not validate a TOEC module.
+- Foundational thermo-osmotic pressure generation against hydraulic back-pressure is published experimental evidence.
+- Li et al. 2021 published a pump-free multistage experiment at 1.39±0.25 W/m²; its 30-stage 2.72% / 14 W/m² point is theoretical.
+- Zhang et al. 2025 published measured single-stage flux 56.69 L m^-2 h^-1; its 38-stage 4.72% / 34.05 W/m² point is theoretical and must not be fused with the single-stage flux as one loaded operating point.
+- R075 is our SIMULATED package screen: ~1.40 L optimistic versus ~4.29 L conservative around N=16 at 80/40°C.
+- R076 is a PROPOSED physical calibration contract plus analytical inversion; no bench data exist from our lab.
 
-## R075 computational audit
+## Frozen R076 experiment
 
-Reusable model: `src/energy_lab/toec.py`
-Regression tests: `tests/test_toec.py`
-Reference sweep: `artifacts/r075-toec-sweep.csv`
-Cases: 60/20°C and 80/40°C; N=1/4/8/16/38; conservative and optimistic-but-defensible package screens.
+Authoritative contract: `lab/experiments/EXP-TO-001/R076-CALIBRATION-CONTRACT.md`
+Reusable scale bridge: `src/energy_lab/toec_calibration.py`
+Threshold table: `artifacts/r076-toec-calibration-thresholds.csv`
 
-The temperature span is partitioned across stages exactly once in the audit profile. The model then applies literature-anchored 38-stage efficiency/power-density envelopes plus explicit header loss, PTO, membrane-area density, per-stage overhead, thermal-network specific duty, parasitics and housing volume. Packaging numbers are deliberately labelled free screening assumptions rather than evidence.
+The rig is four thermally cascaded but hydraulically separable cassettes, 100 cm² active area each, with matched source/sink calorimetry, every-stage temperature, membrane/outlet pressure, individual permeate flow, common-manifold pressure and interstage heat accounting. Loaded sweep is 1–5 MPa only within qualified component ratings, with blank/open-load controls and three restart repeats at the best loaded point.
 
-### Decisive results
+## Compactness gate
 
-- **Optimistic 80/40°C passes the 10 W / 2 L gate for all tested stage counts.** The minimum projected package is at **N=16: ~1.40 L**, ~0.445 m² membrane, ~304 W source heat, ~3.29% electric efficiency = ~29% of Carnot. N=38 is slightly larger (~1.45 L) because added stage overhead outweighs the membrane/thermal savings.
-- **Conservative 80/40°C fails compactness badly:** best case is ~4.18 L at N=38; N=16 is ~4.29 L. Efficiency itself still clears the 10–15% Carnot target at moderate/high N, so the dominant failure is **package compactness**, especially membrane-core area density plus thermal-network duty density, not a thermodynamic impossibility.
-- **Optimistic 60/20°C is borderline:** N=16 ~1.99 L and N=38 ~1.95 L, leaving almost no packaging margin. Conservative cases are ~6–10 L.
-- At conservative 80/40°C, N=16 needs roughly a **3.2× combined reduction** in membrane-core + thermal-network volume to fit the remaining 2 L envelope. This is the sharp design target.
+For the R075 conservative N=16 state, only 1.0463 L remains for membrane + thermal network under 2 L:
 
-### Anchor-consistency warning
+`0.8681/rho_A + 528.7/q_V <= 1.0463 L`
 
-A deliberately adversarial diagnostic shows why the 56.69 L m^-2 h^-1 measured single-stage flux cannot be naively multiplied into the 38-stage 34.05 W/m² / 4.72% model point. At ~2.358 MJ/kg latent heat, that flux corresponds to ~37.1 kW/m² latent transport, while 34.05/0.0472 implies only ~0.721 kW/m² source heat. Treating them as one operating point would imply ~98.06% latent-heat recovery, exceeding the simple ideal 38-effect value 97.37%. That is a normalization/operating-condition mismatch flag, not an energy anomaly.
+At rho_A=1.10 m²/L, q_V must be ~2056 W/L; at q_V=1000 W/L, rho_A must be ~1.68 m²/L. This shows membrane packing alone does not close the conservative package.
 
-## Current gate
+## Promotion rule
 
-Do **not** promote to HIGH PRIORITY from R075. The branch is conditionally viable but model-sensitive. The next decisive physical step is a **2–4 stage instrumented module**, not a 38-stage build. It must measure source heat, stage temperatures, loaded water flux/pressure, hydraulic output, heat recovery and header loss simultaneously. The key question is whether measured module data land closer to the optimistic compactness envelope or the conservative one.
+Do not promote from proposed instrumentation or from sensor precision. Promotion requires actual matched 4-stage data whose calibrated projection has 95% upper total volume <=2 L and 95% lower electric performance >=15% Carnot preferred, plus heat closure <=5%, hydraulic closure <=3%, and restart reproducibility <=5%. The unmeasured 4→16 scale law retains a separate ~15–20% sensitivity band.
 
-Promotion requires a calibrated model whose 95% bounds still project >=10 W DC in <=2 L and >=15% of Carnot preferred, with no borrowed single-stage flux or hidden thermal recycle.
+Until those data exist, TO-01 is **waiting-hardware / NEEDS DATA** and further stage-count desk variants are not eligible progress.
