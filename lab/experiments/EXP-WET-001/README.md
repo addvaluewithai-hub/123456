@@ -1,9 +1,10 @@
 # EXP-WET-001 — Phase-aware wet coupon identification
 
-Status: **PROPOSED**
+Status: **PROPOSED / WAITING HARDWARE**
 Branch: WET-01
 Origin: R069–R073
 Digital gate frozen: **R077**
+Hardware packet frozen: **R079**
 
 ## Question
 
@@ -19,19 +20,19 @@ At the frozen compact design point, does the real wet thermal/mass-transfer elem
 - thermal span: ~293 to 333 K nominal
 - test order: DRY then WET under matched geometry/forcing
 
-Earlier design lineage used an active coupon around 0.225 L, ~75 cm² gas-flow area and ~30 mm active length; exact build dimensions must remain linked to the final CAD/manufacturing tolerance record.
+R079 makes the earlier ~0.225 L / ~75 cm² / 30 mm lineage buildable as a parallel-slit cartridge while keeping as-built `A/P` authoritative. See `R079-HARDWARE-PACKET.md` before procurement or fabrication.
 
 ## Measured channels
 
 - mean pressure separately from dynamic pressure;
-- synchronized dynamic pressure across/within coupon;
+- synchronized flush dynamic pressure across/within coupon;
 - piston displacement (derive flow by harmonic fit, not noisy differentiation);
 - hot/cold liquid-loop calorimetry;
 - dynamically calibrated wall/gas temperature or heat-flux phase channel;
 - optional H2O concentration/phase measurement if practical;
 - water inventory / flooding-dryout observations.
 
-All dynamic channels share a clock and have a measured complex transfer function around the operating frequency.
+All phase-critical dynamic channels share one simultaneous-sampling clock and have a measured complex transfer function around the operating frequency.
 
 ## Predeclared gate
 
@@ -63,6 +64,20 @@ The frozen decision logic is implemented in `src/energy_lab/wet_metrology.py`, t
 - classify a future calibrated summary: `energy-lab wet-classify --input <measurement.json> --output <result.json>`
 
 For an illustrative metrology capability of 5% 1-sigma relative uncertainty on derived `Re{G*}/V`, 2° phase sigma and 0.2 W wet-loss sigma, a clean 95%-bound PASS requires nominal `Re{G*}/V >= 119.73 kW m^-3 K^-1`, `|phase| <= 26.08°`, and wet loss `<=1.908 W`. These are metrology guardbands, not measured coupon performance.
+
+## R079 build / acquisition contract
+
+`R079-HARDWARE-PACKET.md` freezes:
+
+- exact primary/comparison slit realization and geometry tolerances;
+- pressure-balanced drive scale and piston displacement target;
+- mandatory dynamic/static pressure, displacement, dynamic thermal and calorimetric channels;
+- simultaneous-sampling and 1/3/5/7/10 Hz complex calibration requirements;
+- fixed DRY20/DRY40/WET20/WET40 repeat sequence;
+- energy-closure, repeatability and safety gates;
+- `contracts/hardware-run-manifest.schema.json` for immutable raw/calibration provenance.
+
+No new WET desk geometry/metrology work is justified after R079 without physical bench data or new evidence that invalidates a frozen assumption.
 
 ## Safety boundary
 

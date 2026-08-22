@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://energy-lab.local/schemas/exp-wet-001-hardware-run-manifest.schema.json",
+  "title": "EXP-WET-001 calibrated hardware run manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experiment_id", "record_id", "timestamp_cairo", "cartridge", "condition",
+    "forcing", "daq", "channels", "calibrations", "raw_data", "analysis_git_sha",
+    "safety_review_id", "anomalies"
+  ],
+  "properties": {
+    "experiment_id": {"const": "EXP-WET-001"},
+    "record_id": {"type": "string", "minLength": 1},
+    "timestamp_cairo": {"type": "string", "format": "date-time"},
+    "cartridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "target_rh_mm", "as_built_geometry_file", "geometry_sha256"],
+      "properties": {
+        "id": {"type": "string"},
+        "target_rh_mm": {"enum": [0.25, 0.30]},
+        "as_built_geometry_file": {"type": "string"},
+        "geometry_sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wet_state", "carrier_gas", "mean_pressure_bar_abs", "hot_k", "cold_k", "repeat_index"],
+      "properties": {
+        "wet_state": {"enum": ["DRY", "WET"]},
+        "carrier_gas": {"type": "string", "minLength": 1},
+        "mean_pressure_bar_abs": {"type": "number", "minimum": 0},
+        "hot_k": {"type": "number", "minimum": 0},
+        "cold_k": {"type": "number", "minimum": 0},
+        "repeat_index": {"type": "integer", "minimum": 1}
+      }
+    },
+    "forcing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frequency_hz", "p_hat_kpa_target", "duration_s"],
+      "properties": {
+        "frequency_hz": {"const": 5.0},
+        "p_hat_kpa_target": {"enum": [20, 40]},
+        "duration_s": {"type": "number", "minimum": 60, "maximum": 120}
+      }
+    },
+    "daq": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "sample_rate_hz", "simultaneous_sampling", "clock_id", "channel_map_file"],
+      "properties": {
+        "model": {"type": "string"},
+        "sample_rate_hz": {"type": "number", "minimum": 10000},
+        "simultaneous_sampling": {"const": true},
+        "clock_id": {"type": "string"},
+        "channel_map_file": {"type": "string"}
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "asset_id", "units", "calibration_id"],
+        "properties": {
+          "name": {"type": "string"},
+          "asset_id": {"type": "string"},
+          "units": {"type": "string"},
+          "calibration_id": {"type": "string"}
+        }
+      }
+    },
+    "calibrations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["calibration_id", "file", "sha256"],
+        "properties": {
+          "calibration_id": {"type": "string"},
+          "file": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}
+        }
+      }
+    },
+    "raw_data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "sha256", "format"],
+      "properties": {
+        "file": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+        "format": {"type": "string"}
+      }
+    },
+    "analysis_git_sha": {"type": "string", "pattern": "^[a-fA-F0-9]{40}$"},
+    "safety_review_id": {"type": "string", "minLength": 1},
+    "anomalies": {"type": "array", "items": {"type": "string"}}
+  }
+}

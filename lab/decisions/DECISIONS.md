@@ -31,3 +31,7 @@ Accepted from R075. The measured 56.69 L m^-2 h^-1 **single-stage** flux and the
 ## D008 — Freeze TOEC desk scaling at the 4-stage hardware gate
 
 Accepted from R076. The matched four-stage calibration contract is now the authoritative next TO-01 evidence step. The conservative package boundary is `0.8681/rho_A + 528.7/q_V <= 1.0463 L`; optimistic membrane packing alone cannot rescue conservative transport/thermal duty. TO-01 becomes waiting-hardware. Do not create more stage-count variants until matched module data arrive. Desk priority returns to the highest-value non-hardware task, currently WET-01 metrology code.
+
+## D009 — Freeze WET-01 desk work at the R079 hardware packet
+
+Accepted from R079. The primary physical test remains `r_h=0.25 mm`, 5 Hz, ~10 bar, p-hat 20/40 kPa, DRY then WET; 0.30 mm is comparison only. R079 freezes a buildable slit cartridge, simultaneous phase-critical acquisition, flush pressure sensing, dynamic thermal FRF calibration, calorimetry, repeatability, immutable raw/calibration provenance and pressure/thermal safety prerequisites. Once R079 is published, WET-01 is waiting-hardware. No further WET geometry or metrology desk variants are allowed unless bench data or new external evidence invalidates a frozen assumption.
