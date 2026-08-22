@@ -23,10 +23,14 @@ jobs:
         run: pytest -q
       - name: Validate durable lab state
         run: python -m energy_lab.cli validate-repo --root .
-      - name: Generate deterministic WET-01 reference snapshot
+      - name: Generate deterministic WET-01 diffusion reference
         run: python -m energy_lab.cli wet-snapshot --output artifacts/ci/wet-reference.json
+      - name: Generate deterministic R077 metrology reference
+        run: python -m energy_lab.cli wet-metrology-snapshot --output artifacts/ci/R077-metrology-gate.json
       - uses: actions/upload-artifact@v4
         with:
           name: energy-lab-reference
-          path: artifacts/ci/wet-reference.json
+          path: |
+            artifacts/ci/wet-reference.json
+            artifacts/ci/R077-metrology-gate.json
           if-no-files-found: error
