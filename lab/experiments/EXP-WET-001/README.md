@@ -3,6 +3,7 @@
 Status: **PROPOSED**
 Branch: WET-01
 Origin: R069–R073
+Digital gate frozen: **R077**
 
 ## Question
 
@@ -52,10 +53,21 @@ Near-threshold intervals are **INCONCLUSIVE / NEEDS DATA**, not PASS.
 - combined decision uncertainty: order 6–8% target
 - 0.25 mm intrinsic thermal phase is already ~16°, leaving only single-digit-millisecond extra lag budget for wall/contact/wet-film/interface dynamics.
 
+## R077 deterministic digital gate
+
+The frozen decision logic is implemented in `src/energy_lab/wet_metrology.py`, tested in `tests/test_wet_metrology.py`, and exposed through the CLI.
+
+- deterministic reference: `lab/experiments/EXP-WET-001/reference/R077-metrology-gate.json`
+- calibrated summary input schema: `lab/experiments/EXP-WET-001/contracts/measurement-summary.schema.json`
+- generate reference: `energy-lab wet-metrology-snapshot --output <path>`
+- classify a future calibrated summary: `energy-lab wet-classify --input <measurement.json> --output <result.json>`
+
+For an illustrative metrology capability of 5% 1-sigma relative uncertainty on derived `Re{G*}/V`, 2° phase sigma and 0.2 W wet-loss sigma, a clean 95%-bound PASS requires nominal `Re{G*}/V >= 119.73 kW m^-3 K^-1`, `|phase| <= 26.08°`, and wet loss `<=1.908 W`. These are metrology guardbands, not measured coupon performance.
+
 ## Safety boundary
 
 10 bar pressure hardware requires pressure-rated components, relief strategy, shielding/remote operation as appropriate, and competent physical review. The scheduled agent designs/analyzes; it must not claim physical operation occurred without actual bench evidence.
 
 ## Data contract
 
-Future measurement summaries should be stored under `lab/experiments/EXP-WET-001/data/` with provenance, calibration ID, timestamps, units, raw-data hash/location, and an analysis manifest naming the Git commit and code version used.
+Future raw and reduced measurements should be stored under `lab/experiments/EXP-WET-001/data/` with provenance, calibration ID, timestamps, units, raw-data hash/location, and an analysis manifest naming the Git commit and code version used. The JSON summary contract is intentionally insufficient by itself for a scientific promotion unless the associated raw/calibration provenance exists.
