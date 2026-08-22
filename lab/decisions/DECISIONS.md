@@ -23,3 +23,7 @@ Accepted from R072. When WET-01 is genuinely hardware-only, desk research moves 
 ## D006 — R074 activates TO-01 for desk research
 
 Accepted 2026-08-22 from the published R074 row. Newer resistance-reduced TOEC evidence justifies a complete multi-stage heat-recovery/package model. TO-01 becomes portfolio rank 1 for desk work while WET-01 remains preserved at NEEDS DATA awaiting physical evidence. Promotion requires full source-to-electric and package accounting, not membrane-level/modelled literature numbers alone.
+
+## D007 — Separate TOEC transport anchors and calibrate small before scaling
+
+Accepted from R075. The measured 56.69 L m^-2 h^-1 **single-stage** flux and the separate **modelled 38-stage** 34.05 W/m² / 4.72% result must never be treated as one loaded operating point without matched conditions and normalization. The R075 audit shows an optimistic 80/40°C package can clear 2 L around N≈16, while a conservative envelope remains ~4.2 L; therefore the next decisive step is a measured 2–4 stage calibration module. Do not optimize or build 38 stages until loaded transport, heat recovery, header loss and thermal-network compactness collapse that uncertainty band.
