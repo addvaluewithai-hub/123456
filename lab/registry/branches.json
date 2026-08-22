@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T17:50:00+03:00",
+  "updated_at": "2026-08-22T18:32:00+03:00",
   "branches": [
     {
       "id": "WET-01",
@@ -9,7 +9,7 @@
       "portfolio_rank": 1,
       "verdict": "NEEDS DATA",
       "last_run": "R079",
-      "bottleneck": "R079 closed the final desk-design gap. Only calibrated physical wet-interface conductance/phase/loss data from EXP-WET-001 can now change the verdict.",
+      "bottleneck": "Only calibrated physical wet-interface conductance/phase/loss data from EXP-WET-001 can now change the verdict.",
       "next_task": null,
       "workspace": "lab/experiments/EXP-WET-001/R079-HARDWARE-PACKET.md"
     },
@@ -20,15 +20,26 @@
       "portfolio_rank": 2,
       "verdict": "NEEDS DATA",
       "last_run": "R076",
-      "bottleneck": "R076 froze the exact 4-stage matched calibration. Further stage-count modeling is lower value until measured loaded W/m², hydraulic efficiency, heat recovery, header loss and physical compactness arrive.",
+      "bottleneck": "Matched R076 4-stage loaded transport, heat-recovery, header-loss and compactness measurements are required before more stage scaling.",
       "next_task": null,
       "workspace": "lab/experiments/EXP-TO-001/R076-CALIBRATION-CONTRACT.md"
+    },
+    {
+      "id": "EVOSM-01",
+      "name": "Evaporation-maintained salinity-gradient direct electricity",
+      "status": "active-desk",
+      "portfolio_rank": 3,
+      "verdict": "PROMISING",
+      "last_run": "R080",
+      "bottleneck": "Large-area experiment is only 0.66 W/m² versus 8.5 W/m² at 1 cm²; full membrane/evaporation/package/source-exergy scaling is not yet closed.",
+      "next_task": "T-EVOSM-SCALING-AUDIT",
+      "workspace": "lab/portfolio/R080-PORTFOLIO-SYNTHESIS.md"
     },
     {
       "id": "MAG-01",
       "name": "Magnetic force shaping / vibration conversion",
       "status": "parked",
-      "portfolio_rank": 3,
+      "portfolio_rank": 4,
       "verdict": "LOW PRIORITY",
       "last_run": "R065 lineage",
       "bottleneck": "No fair equal-resource advantage over strong multimodal linear baseline yet demonstrated",

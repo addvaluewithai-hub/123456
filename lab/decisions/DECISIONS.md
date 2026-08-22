@@ -26,12 +26,16 @@ Accepted 2026-08-22 from the published R074 row. Newer resistance-reduced TOEC e
 
 ## D007 — Separate TOEC transport anchors and calibrate small before scaling
 
-Accepted from R075. The measured 56.69 L m^-2 h^-1 **single-stage** flux and the separate **modelled 38-stage** 34.05 W/m² / 4.72% result must never be treated as one loaded operating point without matched conditions and normalization. The R075 audit shows an optimistic 80/40°C package can clear 2 L around N≈16, while a conservative envelope remains ~4.2 L; therefore the next decisive step is a measured 2–4 stage calibration module. Do not optimize or build 38 stages until loaded transport, heat recovery, header loss and thermal-network compactness collapse that uncertainty band.
+Accepted from R075. The measured 56.69 L m^-2 h^-1 single-stage flux and the separate modelled 38-stage 34.05 W/m² / 4.72% result must never be treated as one loaded operating point without matched conditions and normalization. The R075 audit shows an optimistic 80/40°C package can clear 2 L around N≈16, while a conservative envelope remains ~4.2 L; therefore the next decisive step is a measured 2–4 stage calibration module.
 
 ## D008 — Freeze TOEC desk scaling at the 4-stage hardware gate
 
-Accepted from R076. The matched four-stage calibration contract is now the authoritative next TO-01 evidence step. The conservative package boundary is `0.8681/rho_A + 528.7/q_V <= 1.0463 L`; optimistic membrane packing alone cannot rescue conservative transport/thermal duty. TO-01 becomes waiting-hardware. Do not create more stage-count variants until matched module data arrive. Desk priority returns to the highest-value non-hardware task, currently WET-01 metrology code.
+Accepted from R076. The matched four-stage calibration contract is now the authoritative next TO-01 evidence step. TO-01 becomes waiting-hardware. Do not create more stage-count variants until matched module data arrive.
 
 ## D009 — Freeze WET-01 desk work at the R079 hardware packet
 
-Accepted from R079. The primary physical test remains `r_h=0.25 mm`, 5 Hz, ~10 bar, p-hat 20/40 kPa, DRY then WET; 0.30 mm is comparison only. R079 freezes a buildable slit cartridge, simultaneous phase-critical acquisition, flush pressure sensing, dynamic thermal FRF calibration, calorimetry, repeatability, immutable raw/calibration provenance and pressure/thermal safety prerequisites. Once R079 is published, WET-01 is waiting-hardware. No further WET geometry or metrology desk variants are allowed unless bench data or new external evidence invalidates a frozen assumption.
+Accepted from R079. The primary physical test remains r_h=0.25 mm, 5 Hz, ~10 bar, p-hat 20/40 kPa, DRY then WET; 0.30 mm is comparison only. WET-01 is waiting-hardware; no further WET geometry or metrology desk variants are allowed unless bench data or new external evidence invalidates a frozen assumption.
+
+## D010 — R080 reopens evaporation-maintained osmotic electricity for one system audit
+
+Accepted from R080. WET-01 and TO-01 remain ranks 1 and 2 but are both waiting-hardware. The only new desk branch funded is EVOSM-01, because June 2026 Joule data materially change R019's evidence base by demonstrating evaporation-maintained day/night direct osmotic electricity at 1000 cm². The measured large-area density is 0.66 W/m² versus 8.5 W/m² at 1 cm², a 12.9× scale gap. EVOSM-01 gets exactly one first system-level scaling audit anchored to the measured large-area point. If compact 10 W / 2 L performance requires multiple simultaneous heroic improvements, do not create further compact variants; preserve only a distributed-area application if whole-source areal economics/efficiency remain defensible.
