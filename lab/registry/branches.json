@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T11:30:00+03:00",
+  "updated_at": "2026-08-22T11:42:00+03:00",
   "branches": [
+    {
+      "id": "TO-01",
+      "name": "Thermo-osmotic hydraulic conversion",
+      "status": "active",
+      "portfolio_rank": 1,
+      "verdict": "PROMISING",
+      "last_run": "R074",
+      "bottleneck": "Whether multi-stage resistance-reduced TOEC plus heat recovery retains enough source-to-electric efficiency and module power density after real stage temperature drops, parasitics, headers and PTO",
+      "next_task": "T-TOEC-SCALING-MODEL",
+      "workspace": "lab/experiments/EXP-TO-001/README.md"
+    },
     {
       "id": "WET-01",
       "name": "Wet phase-change liquid-piston + direct linear alternator",
-      "status": "active",
-      "portfolio_rank": 1,
+      "status": "waiting-hardware",
+      "portfolio_rank": 2,
       "verdict": "NEEDS DATA",
       "last_run": "R073",
       "bottleneck": "Measured phase-aware complex heat/mass transfer and wet loss at the exact 5 Hz/10 bar coupon point",
       "next_task": "T-WET-METROLOGY-CODE",
       "workspace": "lab/experiments/EXP-WET-001/README.md"
-    },
-    {
-      "id": "TO-01",
-      "name": "Thermo-osmotic hydraulic conversion",
-      "status": "parked-ready",
-      "portfolio_rank": 2,
-      "verdict": "PROMISING",
-      "last_run": "R013/R014 lineage",
-      "bottleneck": "Area-normalized power density and system packaging versus direct use of the same thermal gradient",
-      "next_task": "T-THERMOOSMOTIC-REOPEN",
-      "workspace": "lab/portfolio/PORTFOLIO.md"
     },
     {
       "id": "MAG-01",

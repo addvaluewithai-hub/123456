@@ -15,9 +15,11 @@ Google Sheet: https://docs.google.com/spreadsheets/d/1WaDyqw91D8Ol8bgeX1NJ1e0nW7
 
 ## Current frontier
 
-Latest published research run at infrastructure bootstrap: **R073** (`NEEDS DATA`). The leading branch is a wet phase-change liquid-piston / thermoacoustic core with direct linear alternator. The frozen first hardware point is approximately `r_h=0.25 mm`, `f=5 Hz`, `P_mean=10 bar`, with DRY→WET tests at about 20/40 kPa acoustic amplitude.
+Latest published research run: **R074** (`PROMISING`). R074 correctly pivoted desk research from the hardware-blocked wet phase-change branch to **TO-01 thermo-osmotic hydraulic conversion** and found materially stronger 2025 evidence for resistance-reduced multi-stage TOEC.
 
-Promotion gate: `Re{G*}/V >= 108 kW m^-3 K^-1`, total physical phase preferably `<30°`, wet dissipative loss `<2.3 W`, with calibrated uncertainty and a complete package path to ~10 W DC in <=2 L.
+The next computational question is whether the reported/modelled membrane-level performance survives a complete stage-by-stage heat-recovery and packaging model strongly enough to support ~10 W DC in <=2 L.
+
+The wet phase-change branch remains preserved as a leading hardware candidate, not discarded: its decisive next evidence is the phase-calibrated 0.25 mm / 5 Hz / 10 bar coupon.
 
 ## Repository map
 

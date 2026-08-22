@@ -19,3 +19,7 @@ Accepted from R070–R073. Scalar UA is insufficient. Promotion requires phase-a
 ## D005 — Portfolio fallback
 
 Accepted from R072. When WET-01 is genuinely hardware-only, desk research moves to thermo-osmotic conversion rather than manufacturing additional wet-regenerator ideas to keep the scheduler busy.
+
+## D006 — R074 activates TO-01 for desk research
+
+Accepted 2026-08-22 from the published R074 row. Newer resistance-reduced TOEC evidence justifies a complete multi-stage heat-recovery/package model. TO-01 becomes portfolio rank 1 for desk work while WET-01 remains preserved at NEEDS DATA awaiting physical evidence. Promotion requires full source-to-electric and package accounting, not membrane-level/modelled literature numbers alone.

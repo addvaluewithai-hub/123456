@@ -1,20 +1,20 @@
 # Research Portfolio
 
-## 1 — WET-01: wet phase-change liquid-piston + direct linear alternator
+## 1 — TO-01: thermo-osmotic hydraulic conversion
 
-Current verdict: **NEEDS DATA** after R073.
+Current verdict: **PROMISING** after R074. Active desk-research branch.
 
-Why it leads: it has a real low-grade thermal source, a plausible compact conversion path, a defined 10 W / <=2 L target, and the remaining uncertainty has been reduced to a measurable phase-aware heat/mass-transfer gate rather than an undefined mechanism.
+Why it moved up: R074 found newer resistance-reduced thermo-osmotic work that materially improves the credible transport/efficiency picture, plus a plausible neighboring heat-recovery mutation. The strongest compact-power number is still modelled, so the next gate is a full multi-stage thermal/package model, not promotion by citation.
 
-Current rule: finish the reproducible metrology/model contract, then obtain hardware data or stop desk geometry churn.
+Current rule: model stage temperature collapse, heat recovery, parasitics and volume honestly. If it survives, define a 2–4 stage bench test.
 
-## 2 — TO-01: thermo-osmotic hydraulic conversion
+## 2 — WET-01: wet phase-change liquid-piston + direct linear alternator
 
-Current verdict: **PROMISING / parked-ready**.
+Current verdict: **NEEDS DATA** after R073. Hardware-waiting, not rejected.
 
-Why it survives: experimentally established pressure generation from a thermal gradient and conceptually simple hydraulic accumulation/conversion. Main risk is area-normalized power density, packaging, and whether it beats direct use of the same heat source.
+Why it survives: real low-grade thermal source, plausible compact conversion path, defined 10 W / <=2 L target, and its uncertainty has been reduced to a measurable phase-aware heat/mass-transfer gate.
 
-Reopen when WET-01 becomes hardware-only or fails its gate.
+Current rule: preserve the 0.25 mm / 5 Hz / 10 bar DRY→WET coupon design and measurement contract. Do not create more geometry variants to simulate progress. Repo metrology tooling can be completed when it advances hardware readiness.
 
 ## 3 — MAG-01: magnetic force shaping / vibration conversion
 
@@ -24,4 +24,4 @@ Retain as a tool for commutation, impedance shaping, frequency up-conversion, co
 
 ## Portfolio policy
 
-Do not spend many consecutive shifts on a branch once the highest-value missing evidence is physically unavailable. Shift desk research to an independent branch, while preserving a precise blocked experiment packet for the leading branch.
+Do not spend many consecutive shifts on a branch once its highest-value missing evidence is physically unavailable. Shift desk research to an independent branch while preserving a precise blocked experiment packet. Re-rank from evidence, not attachment to the latest idea.

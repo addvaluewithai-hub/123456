@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T11:30:00+03:00",
+  "updated_at": "2026-08-22T11:42:00+03:00",
   "policy": {
     "max_tasks_per_shift": 1,
     "claim_lease_minutes": 120,
@@ -8,12 +8,28 @@
   },
   "tasks": [
     {
+      "id": "T-TOEC-SCALING-MODEL",
+      "branch_id": "TO-01",
+      "title": "Build multi-stage TOEC heat-recovery and packaging scaling model",
+      "type": "computational-model",
+      "status": "ready",
+      "priority": 100,
+      "created_at": "2026-08-22T11:42:00+03:00",
+      "depends_on": ["T-THERMOOSMOTIC-REOPEN"],
+      "recommended_role": "computational-modeler",
+      "workspace": "lab/tasks/T-TOEC-SCALING-MODEL.md",
+      "success_test": "A reproducible model compares 60/20°C and 80/40°C for N=1/4/8/16/38 with explicit per-stage thermal profile, source heat, heat recovery, conductive/parasitic heat, membrane area, hydraulic power, header/structural volume and PTO; it reports W/L and fraction of Carnot and applies the R074 10 W/2 L decision gate without treating modelled literature numbers as measured module data.",
+      "claim": null,
+      "attempts": 0,
+      "last_completed_run": null
+    },
+    {
       "id": "T-WET-METROLOGY-CODE",
       "branch_id": "WET-01",
       "title": "Implement phase-aware coupon digital experiment and uncertainty gate",
       "type": "computational-model",
       "status": "ready",
-      "priority": 100,
+      "priority": 70,
       "created_at": "2026-08-22T11:30:00+03:00",
       "depends_on": [],
       "recommended_role": "computational-modeler",
@@ -29,7 +45,7 @@
       "title": "Freeze buildable coupon instrumentation packet without inventing data",
       "type": "experiment-design",
       "status": "ready",
-      "priority": 80,
+      "priority": 65,
       "created_at": "2026-08-22T11:31:00+03:00",
       "depends_on": ["T-WET-METROLOGY-CODE"],
       "recommended_role": "experimentalist-metrologist",
@@ -44,7 +60,7 @@
       "branch_id": "TO-01",
       "title": "Reopen thermo-osmotic hydraulic branch with fair power-density baseline",
       "type": "research",
-      "status": "ready",
+      "status": "done",
       "priority": 60,
       "created_at": "2026-08-22T11:32:00+03:00",
       "depends_on": [],
@@ -52,8 +68,8 @@
       "workspace": "lab/portfolio/PORTFOLIO.md",
       "success_test": "Identify the strongest modern thermo-osmotic architecture, quantify source-to-electric path and area/volume power density against a fair direct-thermal baseline, and either define one decisive model/experiment or downgrade it.",
       "claim": null,
-      "attempts": 0,
-      "last_completed_run": null
+      "attempts": 1,
+      "last_completed_run": "R074"
     },
     {
       "id": "T-PORTFOLIO-REVIEW-001",

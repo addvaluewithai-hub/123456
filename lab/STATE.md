@@ -1,39 +1,33 @@
 # Current Lab State
 
-Updated: 2026-08-22 11:30 Africa/Cairo (infrastructure bootstrap)
+Updated: 2026-08-22 11:42 Africa/Cairo (post-migration reconciliation)
 
 ## Published frontier
 
-- Latest Sheet1 research run: **R073**
-- Verdict: **NEEDS DATA**
-- Lead branch: **WET-01 — wet phase-change liquid-piston / wet thermoacoustic core + direct linear alternator**
-- Portfolio backup: **TO-01 — thermo-osmotic hydraulic conversion**
+- Latest Sheet1 research run: **R074**
+- Verdict: **PROMISING**
+- Active desk-research branch: **TO-01 — thermo-osmotic hydraulic conversion**
+- Hardware-waiting branch: **WET-01 — wet phase-change liquid-piston / wet thermoacoustic core + direct linear alternator**
 - Magnetic/vibration shaping: **LOW PRIORITY** as a general energy architecture; retain for niche impedance/frequency shaping.
 
-## Frozen WET-01 point
+## What R074 changed
 
-- hydraulic radius: ~0.25 mm primary; 0.30 mm comparison
-- frequency: ~5 Hz
-- mean pressure: ~10 bar
-- acoustic pressure cases: ~20 and 40 kPa
-- sequence: DRY → WET
-- source span: roughly 293 K → 333 K
+R074 used the explicit R073 fallback rule because no wet-coupon bench data existed. Newer evidence materially strengthened TO-01: a 2025 resistance-reduced thermo-osmotic energy-conversion study reported 56.69 L m^-2 h^-1 single-stage water flux experimentally and modelled a 38-stage 80/40°C system at 4.72% absolute operational efficiency and 34.05 W/m². A related 2024 heat-recovery membrane-distillation result motivates local latent-heat reuse. These are evidence anchors, not yet a compact-generator proof.
 
-## Promotion gate
+## Current decisive question
 
-Require calibrated evidence supporting all of:
+Does a complete multi-stage TOEC model—explicitly including per-stage temperature drop, conductive heat leak, condensation/vapour resistance, hydraulic pressure-flow, headers/separators, accumulator/PTO and package volume—still project >=10 W DC in <=2 L at >=10–15% of Carnot electric without unrealistically preserving source ΔT across many stages?
 
-- `Re{G*}/V >= 108 kW m^-3 K^-1` (95% lower bound preferred for final pass)
-- total physical thermal/mass-transfer phase preferably `<30°`
-- wet dissipative acoustic loss `<2.3 W` (95% upper bound for final pass)
-- acoustic work cross-check by p-U and p-V methods
-- heat-flow/energy closure within experiment uncertainty
-- complete converter projection near 10 W DC in <=2 L with a credible Carnot fraction
+## WET-01 preserved gate
 
-## Current bottleneck
+When hardware becomes available, WET-01 still requires approximately:
 
-R073 showed the experiment is decision-capable only with dynamic phase calibration. The remaining decisive unknown is real wet interface/wall/contact behavior at 5 Hz/10 bar; no bench dataset for our exact coupon exists in the repo.
+- 0.25 mm primary / 0.30 mm comparison;
+- 5 Hz, ~10 bar, p-hat ~20/40 kPa, DRY→WET;
+- 95% lower bound `Re{G*}/V >= 108 kW m^-3 K^-1`;
+- total physical phase preferably `<30°`;
+- 95% upper bound wet dissipative loss `<2.3 W`.
 
 ## Next task
 
-`T-WET-METROLOGY-CODE`: turn the R073 measurement logic into reproducible repo code/configs, uncertainty propagation, and a machine-readable experiment contract. This is the last high-value desk/model implementation before hardware data or a deliberate portfolio switch.
+`T-TOEC-SCALING-MODEL` — implement the R074 stage-by-stage scaling/heat-recovery/package model and make its assumptions and gates machine-readable.
