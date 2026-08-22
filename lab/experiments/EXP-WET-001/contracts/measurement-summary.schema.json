@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "energy-lab/EXP-WET-001/measurement-summary.schema.json",
   "title": "EXP-WET-001 calibrated measurement summary",
+  "description": "All sigma fields are 1-sigma standard uncertainties. This is a calibrated summary contract, not a raw-trace format. physical_phase_deg is corrected for instrument transfer function before classification.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -28,5 +29,16 @@
     "energy_closure_fraction": {"type": "number", "minimum": 0},
     "repeatability_fraction": {"type": "number", "minimum": 0}
   },
-  "description": "All sigma fields are 1-sigma standard uncertainties. This is a calibrated summary contract, not a raw-trace format. physical_phase_deg is corrected for instrument transfer function before classification."
+  "x-energy-lab": {
+    "evidence_state_required_for_promotion": "BENCH-MEASURED or stronger",
+    "raw_data_and_calibration_provenance_required_separately": true,
+    "predeclared_gate": {
+      "min_95_lower_re_g_per_v_w_m3_k": 108000.0,
+      "max_95_upper_abs_phase_deg": 30.0,
+      "max_95_upper_wet_loss_w": 2.3,
+      "max_work_disagreement_fraction": 0.05,
+      "max_energy_closure_fraction": 0.05,
+      "max_repeatability_fraction": 0.05
+    }
+  }
 }
