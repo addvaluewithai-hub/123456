@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T17:07:00+03:00",
+  "updated_at": "2026-08-22T17:16:00+03:00",
   "policy": {
     "max_tasks_per_shift": 1,
     "claim_lease_minutes": 120,
@@ -44,23 +44,17 @@
       "branch_id": "WET-01",
       "title": "Implement phase-aware coupon digital experiment and uncertainty gate",
       "type": "computational-model",
-      "status": "claimed",
+      "status": "done",
       "priority": 70,
       "created_at": "2026-08-22T11:30:00+03:00",
       "depends_on": [],
       "recommended_role": "computational-modeler",
       "workspace": "lab/tasks/T-WET-METROLOGY-CODE.md",
       "success_test": "Repo can deterministically compute the frozen-point diffusion/phase screen, propagate measurement uncertainty to Re{G*}/V and wet loss, classify pass/inconclusive/fail against R073 gates, and emit a machine-readable result with tests.",
-      "claim": {
-        "shift_id": "shift-20260822-1707-r077",
-        "worker_id": "scheduled-agent",
-        "claimed_at": "2026-08-22T17:07:00+03:00",
-        "lease_expires_at": "2026-08-22T19:07:00+03:00",
-        "reserved_run_id": "R077",
-        "recovered_from_shift_id": "run-20260822-1411-r077"
-      },
+      "claim": null,
       "attempts": 2,
-      "last_completed_run": null
+      "last_completed_run": "R077",
+      "last_release_note": "Recovered expired R077 reservation, validated existing code/tests/reference, added CLI and explicit JSON contract metadata, published exactly one R077 Sheet row, and handed off to the hardware packet. No bench data were claimed."
     },
     {
       "id": "T-WET-HARDWARE-PACKET",
