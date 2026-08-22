@@ -12,6 +12,11 @@ from .wet_core import (
     phase_deg,
     required_effective_conductance_density,
 )
+from .wet_metrology import (
+    WetMeasurementSummary,
+    classify_wet_measurement,
+    reference_snapshot as wet_metrology_reference_snapshot,
+)
 
 
 def wet_reference_snapshot() -> dict:
@@ -55,6 +60,17 @@ def wet_reference_snapshot() -> dict:
     }
 
 
+def _emit_json(payload: dict, output: str | None) -> None:
+    text = json.dumps(payload, indent=2, sort_keys=True)
+    if output:
+        path = Path(output)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text + "\n", encoding="utf-8")
+        print(path)
+    else:
+        print(text)
+
+
 def cmd_validate_repo(args: argparse.Namespace) -> int:
     errors = validate_repository(Path(args.root))
     if errors:
@@ -66,15 +82,29 @@ def cmd_validate_repo(args: argparse.Namespace) -> int:
 
 
 def cmd_wet_snapshot(args: argparse.Namespace) -> int:
-    payload = wet_reference_snapshot()
-    text = json.dumps(payload, indent=2, sort_keys=True)
-    if args.output:
-        path = Path(args.output)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(text + "\n", encoding="utf-8")
-        print(path)
+    _emit_json(wet_reference_snapshot(), args.output)
+    return 0
+
+
+def cmd_wet_metrology_snapshot(args: argparse.Namespace) -> int:
+    _emit_json(wet_metrology_reference_snapshot(), args.output)
+    return 0
+
+
+def cmd_wet_classify(args: argparse.Namespace) -> int:
+    payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    if "measurement" in payload:
+        measurement_payload = payload["measurement"]
     else:
-        print(text)
+        measurement_payload = payload
+    measurement = WetMeasurementSummary(**measurement_payload)
+    result = classify_wet_measurement(measurement)
+    result["contract"] = {
+        "schema_version": 1,
+        "input_schema": "lab/experiments/EXP-WET-001/contracts/measurement-summary.schema.json",
+        "classification_semantics": "PASS requires all 95% physics bounds and quality gates; intervals crossing a gate are INCONCLUSIVE.",
+    }
+    _emit_json(result, args.output)
     return 0
 
 
@@ -89,6 +119,15 @@ def build_parser() -> argparse.ArgumentParser:
     snapshot = sub.add_parser("wet-snapshot")
     snapshot.add_argument("--output")
     snapshot.set_defaults(func=cmd_wet_snapshot)
+
+    metrology_snapshot = sub.add_parser("wet-metrology-snapshot")
+    metrology_snapshot.add_argument("--output")
+    metrology_snapshot.set_defaults(func=cmd_wet_metrology_snapshot)
+
+    classify = sub.add_parser("wet-classify")
+    classify.add_argument("--input", required=True)
+    classify.add_argument("--output")
+    classify.set_defaults(func=cmd_wet_classify)
     return parser
 
 
