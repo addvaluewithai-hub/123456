@@ -5,8 +5,9 @@
 - Task: T-TOEC-MODULE-CALIBRATION
 - Branch: TO-01
 - Role: experimentalist-metrologist
-- Timestamp: 2026-08-22 13:07–13:xx Africa/Cairo
+- Timestamp: 2026-08-22 13:07–13:18 Africa/Cairo
 - State before: R075 NEEDS DATA; optimistic 80/40 N16 ~1.40 L vs conservative ~4.29 L
+- State after: R076 published NEEDS DATA; TO-01 waiting-hardware; WET-01 next desk branch
 - Evidence state: ANALYTICAL + SIMULATED + PUBLISHED EXPERIMENTAL anchors; new apparatus remains PROPOSED
 
 ## Mission
@@ -27,8 +28,8 @@ Counter-hypothesis: once loaded pressure-flow, source heat, recovery and real mo
 
 1. Chose a 4-stage thermally cascaded, hydraulically separable rig with 100 cm² active membrane per stage. This gives ~0.58–0.90 W gross hydraulic signal across the current R075 conservative/optimistic N4 screen and order 23–25 W source heat, large enough for accurate calorimetry/flow measurement.
 2. Defined source/sink/stage temperature, pressure, flow, interstage recovery and geometry measurements, controls, repeatability and safety boundaries.
-3. Derived the conservative N16 packaging boundary exactly: 0.8681/rho_A + 528.7/q_V <= 1.0463 L.
-4. Implemented `toec_calibration.py` so a future measured N4 point can be projected through the frozen R075 4->16 law without fitting a new favorable stage curve.
+3. Derived the conservative N16 packaging boundary exactly: `0.8681/rho_A + 528.7/q_V <= 1.0463 L`.
+4. Implemented `src/energy_lab/toec_calibration.py` so a future measured N4 point can be projected through the frozen R075 4->16 law without fitting a new favorable stage curve.
 5. Added regression tests requiring the N4->N16 bridge to reproduce both existing R075 optimistic and conservative envelopes.
 6. Rechecked primary evidence: Nature Energy 2016 direct pressure-generation experiment; ACS AMI 2021 pump-free multistage experiment (1.39±0.25 W/m²); Applied Energy 2025 resistance-reduced single-stage flux plus separate theoretical 38-stage benchmark.
 
@@ -42,19 +43,19 @@ A sensor budget around 0.3% pressure, 0.5% flow and <=2.5% calorimetry yields ~0
 
 Source: external 80->40°C low-grade heat. Power stroke: thermo-osmotic vapour transport against hydraulic backpressure. Useful output: measured DeltaP*Vdot, later converted by explicit PTO efficiency. Reset: condensation, working-water return and thermal cascade. Costs: conductive/environmental heat leak, header pressure drop, thermal-network volume/resistance, circulation/conditioning power, PTO/parasitics and stage/housing volume. No output is credited to pressure storage or heat recovery itself.
 
-## Adversarial review
+## Adversarial review and validation
 
 The proposed 4-stage rig cannot by itself prove the 16-stage interpolation. High sensor precision could create false confidence if stage-scaling error is omitted. Therefore the decision rule separates metrology uncertainty from a >=15–20% scale-law band, and nominal <=2 L with an interval crossing 2 L is INCONCLUSIVE rather than a pass.
 
-The interstage recovery measurement must not be reduced to a single inferred percentage without source/sink heat closure; hydraulic output and heat flow must be measured simultaneously.
+A pre-close calculation caught a regression bug in the first calibration bridge: it used the optimistic eta stage law for both optimistic and conservative regression cases. The bridge was corrected to carry the R075 stage-law parameter explicitly. Direct recalculation after the fix reproduces the accepted N=16 package values: optimistic 1.40265 L / 304.18 W source heat and conservative 4.29427 L / 528.68 W. GitHub Actions status was not surfaced through the available connector during this run, so CI is not claimed as passed.
 
 ## Verdict
 
-NEEDS DATA. The desk uncertainty is now sufficiently compressed that further stage-count variants are lower value than a physical 4-stage calibration. TO-01 should become waiting-hardware after publication unless a concrete source of matched module data appears.
+NEEDS DATA. The desk uncertainty is now sufficiently compressed that further stage-count variants are lower value than a physical 4-stage calibration. TO-01 is waiting-hardware.
 
 ## Next exact question
 
-Run EXP-TO-001 as specified. If no hardware data are available, switch desk priority to the next eligible non-hardware task (currently WET-01 metrology code or portfolio review) rather than generating more TOEC package scenarios.
+Run EXP-TO-001 as specified. If no hardware data are available, execute the next eligible non-hardware task: WET-01 phase-aware metrology/uncertainty code. Do not generate more TOEC package scenarios to fill runs.
 
 ## Sources
 
