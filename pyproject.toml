@@ -4,12 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "energy-research-lab"
-version = "0.1.0"
-description = "Reproducible computational models for the Energy Research Lab"
+version = "0.2.0"
+description = "Reproducible computational and operational infrastructure for the Energy Research Lab"
 requires-python = ">=3.11"
 dependencies = [
   "numpy>=1.26",
 ]
+
+[project.scripts]
+energy-lab = "energy_lab.cli:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]

@@ -1,38 +1,38 @@
 # Energy Research Lab
 
-Computational notebook/codebase for the ongoing energy-conversion research program.
+A persistent invention/research operating system for exploring physically defensible energy architectures.
 
-## Current branch: R073 wet phase-change coupon
+## Start here
 
-The active candidate is a pressurized wet phase-change liquid-piston / thermoacoustic core coupled to a direct linear alternator.
+Every scheduled research agent starts at [`lab/RUNNER.md`](lab/RUNNER.md). Do not reconstruct the lab from chat memory.
 
-Frozen first test point:
+## Two-layer memory model
 
-- hydraulic radius: ~0.25 mm
-- frequency: ~5 Hz
-- mean pressure: ~10 bar
-- source temperature span: ~293 K -> 333 K
-- dynamic pressure cases: ~20 and 40 kPa
+- **GitHub = operational and executable source of truth.** Queue, claims, roles, branch state, decisions, models, code, experiment manifests, run logs, and handoffs live here.
+- **Google Sheet = append-only scientific ledger + human dashboard.** `Sheet1` is the immutable R001… research record. It is not the task queue.
 
-### Promotion gate
+Google Sheet: https://docs.google.com/spreadsheets/d/1WaDyqw91D8Ol8bgeX1NJ1e0nW7h1tFShoWW-BLR4sCQ/edit
 
-The concept is not considered validated unless a calibrated DRY -> WET coupon can support all of the following simultaneously:
+## Current frontier
 
-- Re{G*}/V >= 108 kW m^-3 K^-1
-- total thermal/mass-transfer phase lag preferably < 30 deg
-- wet dissipative acoustic loss < 2.3 W
-- complete projection: >=10 W DC in <=2 L
+Latest published research run at infrastructure bootstrap: **R073** (`NEEDS DATA`). The leading branch is a wet phase-change liquid-piston / thermoacoustic core with direct linear alternator. The frozen first hardware point is approximately `r_h=0.25 mm`, `f=5 Hz`, `P_mean=10 bar`, with DRY→WET tests at about 20/40 kPa acoustic amplitude.
 
-The repository exists to make every calculation reproducible, run parameter sweeps/uncertainty tests, and later ingest real sensor data. Simulation is not treated as experimental proof.
+Promotion gate: `Re{G*}/V >= 108 kW m^-3 K^-1`, total physical phase preferably `<30°`, wet dissipative loss `<2.3 W`, with calibrated uncertainty and a complete package path to ~10 W DC in <=2 L.
 
-## Planned structure
+## Repository map
 
-- `src/energy_lab/` — physics models and energy ledger
-- `scripts/` — parameter sweeps and R0xx analyses
-- `tests/` — conservation/regression tests
-- `.github/workflows/` — automated CI checks
-- `results/` — machine-readable outputs from each research run
+- `lab/RUNNER.md` — authoritative scheduler entrypoint
+- `lab/CHARTER.md` — mission and non-negotiables
+- `lab/OPERATING-SYSTEM.md` — runtime/state architecture
+- `lab/STATE.md` / `lab/HANDOFF.md` — concise current truth
+- `lab/registry/queue.json` — claimable work queue
+- `lab/registry/run-counter.json` — collision-safe research-run allocation
+- `lab/registry/branches.json` — portfolio state
+- `lab/protocols/` — scientific and operational contracts
+- `lab/tasks/` — task workspaces
+- `lab/experiments/` — experiment manifests and gates
+- `lab/runs/` — append-only shift/run logs
+- `src/energy_lab/` — executable models and validation utilities
+- `tests/` — regression tests
 
-## Rule
-
-Every apparent gain must close the full energy ledger. Resonance, magnets, pressure, capillarity, geometry, and control are conversion mechanisms—not untracked energy sources.
+The scheduler is only a wake-up mechanism. Durable truth must survive in Git and the Sheet so a fresh agent with no conversation history can continue safely.

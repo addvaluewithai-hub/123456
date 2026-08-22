@@ -5,14 +5,28 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: pip
       - run: python -m pip install --upgrade pip
       - run: pip install -e '.[dev]'
-      - run: pytest -q
+      - name: Unit and scientific regression tests
+        run: pytest -q
+      - name: Validate durable lab state
+        run: python -m energy_lab.cli validate-repo --root .
+      - name: Generate deterministic WET-01 reference snapshot
+        run: python -m energy_lab.cli wet-snapshot --output artifacts/ci/wet-reference.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: energy-lab-reference
+          path: artifacts/ci/wet-reference.json
+          if-no-files-found: error

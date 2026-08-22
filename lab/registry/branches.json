@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-22T11:30:00+03:00",
+  "branches": [
+    {
+      "id": "WET-01",
+      "name": "Wet phase-change liquid-piston + direct linear alternator",
+      "status": "active",
+      "portfolio_rank": 1,
+      "verdict": "NEEDS DATA",
+      "last_run": "R073",
+      "bottleneck": "Measured phase-aware complex heat/mass transfer and wet loss at the exact 5 Hz/10 bar coupon point",
+      "next_task": "T-WET-METROLOGY-CODE",
+      "workspace": "lab/experiments/EXP-WET-001/README.md"
+    },
+    {
+      "id": "TO-01",
+      "name": "Thermo-osmotic hydraulic conversion",
+      "status": "parked-ready",
+      "portfolio_rank": 2,
+      "verdict": "PROMISING",
+      "last_run": "R013/R014 lineage",
+      "bottleneck": "Area-normalized power density and system packaging versus direct use of the same thermal gradient",
+      "next_task": "T-THERMOOSMOTIC-REOPEN",
+      "workspace": "lab/portfolio/PORTFOLIO.md"
+    },
+    {
+      "id": "MAG-01",
+      "name": "Magnetic force shaping / vibration conversion",
+      "status": "parked",
+      "portfolio_rank": 3,
+      "verdict": "LOW PRIORITY",
+      "last_run": "R065 lineage",
+      "bottleneck": "No fair equal-resource advantage over strong multimodal linear baseline yet demonstrated",
+      "next_task": null,
+      "workspace": "lab/portfolio/PORTFOLIO.md"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "lab_name": "Energy Research Lab",
+  "repository": "addvaluewithai-hub/123456",
+  "default_branch": "main",
+  "runner": "lab/RUNNER.md",
+  "timezone": "Africa/Cairo",
+  "sheet_url": "https://docs.google.com/spreadsheets/d/1WaDyqw91D8Ol8bgeX1NJ1e0nW7h1tFShoWW-BLR4sCQ/edit",
+  "sheet_ledger_tab": "Sheet1",
+  "sheet_dashboard_tabs": ["Dashboard", "Branches", "Experiments"],
+  "scheduler_intent": "one deep research shift per hourly wakeup",
+  "research_row_columns": 15
+}

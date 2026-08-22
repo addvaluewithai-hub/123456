@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "next_research_run": 74,
+  "last_published_run": "R073",
+  "last_published_at": "2026-08-22T10:30:00+03:00",
+  "active_reservations": [],
+  "allocation_rule": "reserve next_research_run in the same Git claim transaction; SHA conflicts are the lock"
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-22T11:30:00+03:00",
+  "policy": {
+    "max_tasks_per_shift": 1,
+    "claim_lease_minutes": 120,
+    "statuses": ["ready", "claimed", "blocked", "done", "cancelled"]
+  },
+  "tasks": [
+    {
+      "id": "T-WET-METROLOGY-CODE",
+      "branch_id": "WET-01",
+      "title": "Implement phase-aware coupon digital experiment and uncertainty gate",
+      "type": "computational-model",
+      "status": "ready",
+      "priority": 100,
+      "created_at": "2026-08-22T11:30:00+03:00",
+      "depends_on": [],
+      "recommended_role": "computational-modeler",
+      "workspace": "lab/tasks/T-WET-METROLOGY-CODE.md",
+      "success_test": "Repo can deterministically compute the frozen-point diffusion/phase screen, propagate measurement uncertainty to Re{G*}/V and wet loss, classify pass/inconclusive/fail against R073 gates, and emit a machine-readable result with tests.",
+      "claim": null,
+      "attempts": 0,
+      "last_completed_run": null
+    },
+    {
+      "id": "T-WET-HARDWARE-PACKET",
+      "branch_id": "WET-01",
+      "title": "Freeze buildable coupon instrumentation packet without inventing data",
+      "type": "experiment-design",
+      "status": "ready",
+      "priority": 80,
+      "created_at": "2026-08-22T11:31:00+03:00",
+      "depends_on": ["T-WET-METROLOGY-CODE"],
+      "recommended_role": "experimentalist-metrologist",
+      "workspace": "lab/experiments/EXP-WET-001/README.md",
+      "success_test": "Exact sensor/geometry/calibration/BOM-level measurement contract is frozen, risks are explicit, and the branch is marked hardware-blocked if no further desk uncertainty can be removed.",
+      "claim": null,
+      "attempts": 0,
+      "last_completed_run": null
+    },
+    {
+      "id": "T-THERMOOSMOTIC-REOPEN",
+      "branch_id": "TO-01",
+      "title": "Reopen thermo-osmotic hydraulic branch with fair power-density baseline",
+      "type": "research",
+      "status": "ready",
+      "priority": 60,
+      "created_at": "2026-08-22T11:32:00+03:00",
+      "depends_on": [],
+      "recommended_role": "inventor-systems",
+      "workspace": "lab/portfolio/PORTFOLIO.md",
+      "success_test": "Identify the strongest modern thermo-osmotic architecture, quantify source-to-electric path and area/volume power density against a fair direct-thermal baseline, and either define one decisive model/experiment or downgrade it.",
+      "claim": null,
+      "attempts": 0,
+      "last_completed_run": null
+    },
+    {
+      "id": "T-PORTFOLIO-REVIEW-001",
+      "branch_id": "PORTFOLIO",
+      "title": "Portfolio synthesis and next-task seeding",
+      "type": "portfolio",
+      "status": "ready",
+      "priority": 10,
+      "created_at": "2026-08-22T11:33:00+03:00",
+      "depends_on": [],
+      "recommended_role": "research-lead-falsifier",
+      "workspace": "lab/portfolio/PORTFOLIO.md",
+      "success_test": "Re-rank surviving branches from durable evidence, close stale loops, and seed only 1-5 concrete uncertainty-reducing tasks; do not create work merely to keep the scheduler busy.",
+      "claim": null,
+      "attempts": 0,
+      "last_completed_run": null
+    }
+  ]
+}
