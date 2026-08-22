@@ -1,39 +1,34 @@
 # Energy Research Lab — Handoff
 
-Latest published run: **R079**
-Next publishable run: **R080**. `R078` is explicitly abandoned and must not be reused.
+Latest published run: **R080**
+Next publishable run: **R081**. `R078` is explicitly abandoned and must not be reused.
 
-## What R079 closed
+## What R080 changed
 
-WET-01 now has both halves required before hardware:
+The portfolio synthesis did not reopen WET-01 or TO-01. Both remain honestly hardware-limited. Fresh June 2026 Joule evidence materially changed only the old R019 evaporation/osmotic family, so a new branch **EVOSM-01** was opened for exactly one system audit.
 
-- R077: deterministic uncertainty-aware digital gate;
-- R079: buildable cartridge/instrumentation/calibration/provenance/safety packet.
+Key evidence/bounds:
 
-Authoritative files:
+- measured osmotic power density: 8.5 W/m² at 1 cm², but 0.66 W/m² at 1000 cm²;
+- scale degradation: ~12.9×;
+- 10 W at the measured large-area density: ~15.15 m² membrane;
+- hypothetical 2 L core at that density: ~7,576 m²/m³ active-area packing before channels/reservoirs/evaporator;
+- favorable natural-evaporation resource bound: ~10.49 W/m² annual average, implying ~0.95 m² exposed source surface even for ideal 10 W capture.
 
-- `lab/experiments/EXP-WET-001/R079-HARDWARE-PACKET.md`
-- `lab/experiments/EXP-WET-001/contracts/hardware-run-manifest.schema.json`
-- `lab/experiments/EXP-WET-001/R077-DIGITAL-GATE.md`
-- `src/energy_lab/wet_metrology.py`
-
-Do not claim physical operation. EXP-WET-001 is still PROPOSED / WAITING HARDWARE.
-
-## Current bottleneck
-
-Both leading branches are now honestly hardware-limited:
-
-- WET-01 needs calibrated 0.25 mm / 5 Hz / 10 bar DRY→WET bench data.
-- TO-01 needs the matched R076 4-stage thermo-osmotic module data.
+Authoritative artifact: `lab/portfolio/R080-PORTFOLIO-SYNTHESIS.md`.
 
 ## Next task
 
-Claim `T-PORTFOLIO-REVIEW-001` under the research-lead-falsifier role and perform a real portfolio synthesis. It should decide whether there is a third branch with a defensible desk-testable uncertainty worth funding, whether an old branch deserves reopening because new evidence changed a premise, or whether the queue should intentionally become empty pending hardware. Seed at most a few concrete tasks and do not manufacture work.
+Claim `T-EVOSM-SCALING-AUDIT` under the computational-modeler role. Build a reproducible whole-system model anchored to the measured 1000 cm² / 0.66 W/m² result, not the 1 cm² record. Close membrane area/packing, concentration polarization, salinity/water inventory, evaporation area and mass flux, source exergy, salt crossover, circulation parasitics, contacts/series wiring and package volume. Compare direct osmotic electricity against R019 hydraulic PRO + pressure recovery under the same source.
+
+## Stop condition
+
+If <=2 L compact output needs >3× improvement in more than one independent measured bottleneck, retire the compact version rather than seed another optimization. A distributed-area variant may remain only if its complete source-to-electric areal result is competitive after regeneration/parasitics.
 
 ## Known traps
 
-- Do not reopen WET pore radius/frequency or TOEC stage count without new physical/external evidence.
-- Do not convert vendor specifications into bench evidence.
-- Do not count servo/pressure/resonance/magnets as energy sources.
-- Preserve the R077/R079 physical promotion gates exactly unless a later accepted decision explicitly changes them with evidence.
-- Always reconcile Sheet1 first; latest row is R079 and next counter is R080.
+- Do not extrapolate the 1 cm² 8.5 W/m² record directly to module scale.
+- Do not count series voltage as increased energy.
+- Keep external evaporation footprint separate from internal package volume, but report both.
+- Salt is working inventory only if crossover/loss is restored/accounted.
+- WET-01 and TO-01 remain waiting-hardware; do not use R081 to reopen their frozen parameter spaces.
