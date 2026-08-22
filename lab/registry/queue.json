@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T15:18:00+03:00",
+  "updated_at": "2026-08-22T17:07:00+03:00",
   "policy": {
     "max_tasks_per_shift": 1,
     "claim_lease_minutes": 120,
@@ -52,13 +52,14 @@
       "workspace": "lab/tasks/T-WET-METROLOGY-CODE.md",
       "success_test": "Repo can deterministically compute the frozen-point diffusion/phase screen, propagate measurement uncertainty to Re{G*}/V and wet loss, classify pass/inconclusive/fail against R073 gates, and emit a machine-readable result with tests.",
       "claim": {
-        "shift_id": "run-20260822-1411-r077",
+        "shift_id": "shift-20260822-1707-r077",
         "worker_id": "scheduled-agent",
-        "claimed_at": "2026-08-22T14:11:00+03:00",
-        "lease_expires_at": "2026-08-22T16:11:00+03:00",
-        "reserved_run_id": "R077"
+        "claimed_at": "2026-08-22T17:07:00+03:00",
+        "lease_expires_at": "2026-08-22T19:07:00+03:00",
+        "reserved_run_id": "R077",
+        "recovered_from_shift_id": "run-20260822-1411-r077"
       },
-      "attempts": 1,
+      "attempts": 2,
       "last_completed_run": null
     },
     {
