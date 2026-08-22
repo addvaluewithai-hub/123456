@@ -1,30 +1,50 @@
 # Current Lab State
 
-Updated: 2026-08-22 13:18 Africa/Cairo
+Updated: 2026-08-22 17:16 Africa/Cairo
 
 ## Published frontier
 
-- Latest Sheet1 research run: **R076**
+- Latest Sheet1 research run: **R077**
 - Verdict: **NEEDS DATA**
 - Active desk branch: **WET-01 — wet phase-change liquid-piston / wet thermoacoustic core + direct linear alternator**
 - Hardware-waiting branch: **TO-01 — thermo-osmotic hydraulic conversion**
+- Next publishable R-number: **R079** (`R078` is explicitly abandoned and must not be reused)
 
-## What R076 changed
+## What R077 changed
 
-R076 converted the R075 TOEC optimistic-vs-conservative uncertainty into one buildable **4-stage calibration contract** instead of another stage-count sweep. The proposed rig uses 100 cm² active membrane per stage, 80→40°C thermal cascade, separate stage pressure/flow metering, hot/cold calorimetry, interstage heat accounting, blank/open-load controls and a loaded 1–5 MPa sweep within qualified hardware ratings.
+R077 recovered an expired but unpublished reservation safely, validated the existing WET metrology implementation, and froze the R073 decision rule into deterministic code before any hardware measurements are observed.
 
-The conservative N=16 package inversion is now explicit:
+The repo now has:
 
-`0.8681/rho_A + 528.7/q_V <= 1.0463 L`
+- `src/energy_lab/wet_metrology.py` for uncertainty propagation and PASS/INCONCLUSIVE/FAIL classification;
+- `tests/test_wet_metrology.py` scientific regressions;
+- `lab/experiments/EXP-WET-001/contracts/measurement-summary.schema.json` for calibrated summary input;
+- `lab/experiments/EXP-WET-001/reference/R077-metrology-gate.json` deterministic reference;
+- CLI commands `wet-metrology-snapshot` and `wet-classify`;
+- CI configured to run repository tests and generate the deterministic R077 reference on push.
 
-for the membrane + thermal network under the current conservative fixed-volume charges. Therefore rho_A must be at least 0.830 m²/L even if thermal-network volume vanished, and q_V at least 505 W/L even if membrane volume vanished. At rho_A=1.10 m²/L, q_V must be ~2056 W/L; at q_V=1000 W/L, rho_A must be ~1.68 m²/L. Optimistic membrane packing alone does not rescue conservative transport/thermal duty.
+No CI pass is claimed because the available connector did not expose the completed push workflow status during the shift. Key regression assertions were independently executed in the tool environment and passed.
 
-The proposed metrology budget is ~0.6% 1σ on hydraulic power and ~2.7% on hydraulic efficiency, much smaller than the ~3× package gap. The remaining important uncertainty is the unmeasured 4→16 stage scaling law, which must retain a separate ~15–20% sensitivity band.
+## R077 quantitative guardband
+
+The frozen 5 Hz diffusion screen still reproduces the accepted 0.25 mm point: thermal phase ~-16.22° and mass phase ~-13.91°. The 0.30 mm comparison remains materially slower (~-22.25° thermal, ~-19.33° mass).
+
+If the final fitted in-phase conductance has ~5% 1-sigma relative uncertainty, phase sigma is 2°, and wet-loss sigma is 0.2 W, a **clean 95%-bound PASS** requires nominal approximately:
+
+- `Re{G*}/V >= 119.73 kW m^-3 K^-1`;
+- `|phase| <= 26.08°`;
+- `wet loss <= 1.908 W`.
+
+A nominal result near 110–115 kW/m³K is therefore still inconclusive at that uncertainty even though it exceeds the raw 108 kW/m³K threshold.
+
+## WET-01 state
+
+WET-01 remains **NEEDS DATA**. The digital decision layer is closed; one desk task remains to freeze the exact buildable hardware/instrumentation/calibration/safety packet. After that the branch should become waiting-hardware rather than reopen geometry optimization.
 
 ## TO-01 state
 
-TO-01 remains physically plausible but is now **waiting-hardware / NEEDS DATA**. Do not create more 16/38-stage variants. Promotion requires the matched 4-stage experiment in `lab/experiments/EXP-TO-001/R076-CALIBRATION-CONTRACT.md` to support a 95% upper projected volume <=2 L and 95% lower electric performance >=15% Carnot preferred.
+TO-01 remains **waiting-hardware / NEEDS DATA** at the R076 4-stage matched calibration boundary. Do not create more stage-count variants without new physical module evidence.
 
 ## Current next task
 
-`T-WET-METROLOGY-CODE` — implement the frozen WET-01 phase-aware coupon digital experiment and uncertainty gate. This is genuine remaining desk work and must not change the 0.25 mm / 5 Hz / 10 bar hardware point.
+`T-WET-HARDWARE-PACKET` — freeze exact pressure-rated coupon dimensions/tolerances, instrumentation, dynamic transfer-function calibration, DRY→WET procedure, data provenance, BOM-level measurement contract and safety boundaries without claiming physical operation.
