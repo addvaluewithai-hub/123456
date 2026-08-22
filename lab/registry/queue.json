@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T17:16:00+03:00",
+  "updated_at": "2026-08-22T17:25:00+03:00",
   "policy": {
     "max_tasks_per_shift": 1,
     "claim_lease_minutes": 120,
@@ -61,15 +61,21 @@
       "branch_id": "WET-01",
       "title": "Freeze buildable coupon instrumentation packet without inventing data",
       "type": "experiment-design",
-      "status": "ready",
+      "status": "claimed",
       "priority": 65,
       "created_at": "2026-08-22T11:31:00+03:00",
       "depends_on": ["T-WET-METROLOGY-CODE"],
       "recommended_role": "experimentalist-metrologist",
       "workspace": "lab/experiments/EXP-WET-001/README.md",
       "success_test": "Exact sensor/geometry/calibration/BOM-level measurement contract is frozen, risks are explicit, and the branch is marked hardware-blocked if no further desk uncertainty can be removed.",
-      "claim": null,
-      "attempts": 0,
+      "claim": {
+        "shift_id": "shift-20260822-1725-wetpkt",
+        "worker_id": "scheduled-agent",
+        "claimed_at": "2026-08-22T17:25:00+03:00",
+        "lease_expires_at": "2026-08-22T19:25:00+03:00",
+        "reserved_run_id": "R079"
+      },
+      "attempts": 1,
       "last_completed_run": null
     },
     {
