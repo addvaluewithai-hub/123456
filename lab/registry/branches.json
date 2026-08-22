@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22T13:18:00+03:00",
+  "updated_at": "2026-08-22T17:16:00+03:00",
   "branches": [
     {
       "id": "WET-01",
@@ -8,9 +8,9 @@
       "status": "active",
       "portfolio_rank": 1,
       "verdict": "NEEDS DATA",
-      "last_run": "R073",
-      "bottleneck": "Physical coupon still needs measured phase-aware complex heat/mass transfer and wet loss at 0.25 mm / 5 Hz / 10 bar, but the deterministic metrology/uncertainty implementation is an unresolved desk task.",
-      "next_task": "T-WET-METROLOGY-CODE",
+      "last_run": "R077",
+      "bottleneck": "The deterministic phase-aware metrology gate is now closed. One legitimate desk task remains: freeze the exact buildable instrumentation/calibration/safety packet; after that the decisive unknown is physical wet-coupon data at 0.25 mm / 5 Hz / 10 bar.",
+      "next_task": "T-WET-HARDWARE-PACKET",
       "workspace": "lab/experiments/EXP-WET-001/README.md"
     },
     {
